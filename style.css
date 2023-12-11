@@ -263,20 +263,35 @@ section {
 
 /* Estilo para dispositivos móviles y tabletas */
 @media screen and (max-width: 768px) {
-  /* ... (estilos existentes para dispositivos móviles y tabletas) */
-
-  /* Estilo para el menú de hamburguesa */
   .hamburguesa {
-    display: block; /* Hace visible el elemento de hamburguesa */
-    cursor: pointer; /* Cambia el cursor a una mano para indicar clicabilidad */
+    visibility: visible;
+    cursor: pointer;
   }
 
   nav {
-    display: none; /* Oculta la navegación por defecto */
-    flex-direction: column; /* Cambia la dirección del flex para dispositivos móviles y tabletas */
+    visibility: hidden;
+    height: 0;
+    overflow: hidden;
+    flex-direction: column;
+    transition: height 0.3s ease; /* Agrega una transición suave para la altura */
   }
 
   nav.active {
-    display: flex; /* Muestra la navegación cuando la clase active está presente */
+    visibility: visible;
+    height: auto;
   }
 }
+
+/* Oculta el icono de hamburguesa en pantallas más grandes */
+@media screen and (min-width: 769px) {
+  .hamburguesa {
+    display: none;
+  }
+
+  nav {
+    visibility: visible;
+    height: auto;
+    display: flex;
+  }
+}
+
