@@ -1,4 +1,3 @@
-/* Reset de estilos para garantizar la consistencia entre navegadores */
 * {
   margin: 0;
   padding: 0;
@@ -10,26 +9,31 @@ body {
   line-height: 1.6;
 }
 
+/*Menu de navegación*/
+
+.contenido-principal {
+  margin-top: 0px; /* Asegúrate de ajustar este valor según la altura de tu menú */
+}
+
 header {
   background-color: #333;
   color: #fff;
   text-align: center;
   padding: 1em;
-  position: sticky;
+  position: fixed; /* Cambiado a 'fixed' para que el menú sea fijo */
   width: 100%;
   top: 0;
   z-index: 1000; /* asegura que esté por encima de otros elementos */
 }
 
 main {
-  padding-top: 100px; /* ajusta según la altura de tu encabezado */
+  padding-top: 60px; /* Ajusta según la altura de tu encabezado */
 }
-
 
 nav {
   display: flex;
   justify-content: center;
-  margin-top: 10px;
+  background-color: #333; /* Ajusta según el color de fondo de tu menú */
 }
 
 nav a {
@@ -38,7 +42,19 @@ nav a {
   padding: 10px 20px;
   margin: 0 10px;
   font-weight: bold;
+  display: inline-block;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
 }
+
+nav a:hover {
+  background-color: #fff;
+  color: #333;
+}
+
+
+
+
 
 main {
   max-width: 800px;
@@ -93,6 +109,7 @@ footer {
   width: 200px; /* Ajusta el tamaño de la imagen según sea necesario */
   border-radius: 50%; /* Esto hará que la imagen tenga bordes redondeados */
   margin-bottom: 20px; /* Agrega margen en la parte inferior de la imagen */
+  margin-top: 100px
 }
 
 .banner h1, .banner h2, .banner p {
@@ -103,7 +120,15 @@ footer {
   margin: 20px 0; /* Agrega márgenes arriba y abajo a los elementos de texto */
 }
 
+.vision h2 {
+  margin-top: 100px
+}
+
 /*Habilidades*/
+
+.habilidades h2 {
+  margin-top: 100px
+}
 
 .habilidades {
   margin: 30px 0;
@@ -120,13 +145,17 @@ footer {
 
 /*proyectos*/
 
-.projectos ul {
+.proyectos h2 {
+  margin-top: 100px
+}
+
+.proyectos ul {
   list-style-type: none;
   padding: 0;
   display: flex;
 }
 
-.projectos li {
+.proyectos li {
   width: 250px; /* Ancho fijo para todas las cajas, ajusta según tus necesidades */
   border: 1px solid #ddd;
   margin-right: 10px; /* Ajusta el espacio entre proyectos según tus necesidades */
@@ -135,22 +164,26 @@ footer {
   flex-direction: column; /* Dispone los elementos en columna dentro de la caja */
 }
 
-.projectos a {
+.proyectos a {
   text-decoration: none;
   color: #333;
   font-weight: bold;
 }
 
-.projectos img {
+.proyectos img {
   width: 100%; /* La imagen ocupa el 100% del ancho de la caja */
   height: auto; /* Se ajusta automáticamente la altura para mantener la proporción */
 }
 
-.projectos p {
+.proyectos p {
   margin-top: 5px;
 }
 
 /*Análisis*/
+
+.analisis h2 {
+  margin-top: 100px
+}
 
 .analisis {
   margin: 30px 0;
@@ -163,7 +196,6 @@ footer {
   margin: 10px 0; /* 30px en la parte superior e inferior, 0 en los lados */
 }
 
-
 .analisis img {
   height: 90px; /* ajusta la altura según tus necesidades */
   width: auto; /* permite que el ancho se ajuste automáticamente manteniendo la proporción original */
@@ -171,6 +203,10 @@ footer {
 }
 
 /*Certificaciones*/
+
+.certificaciones h2{
+  margin-top: 100px
+}
 
 .certificaciones img {
   height: 50px; /* ajusta la altura según tus necesidades */
@@ -182,6 +218,11 @@ footer {
   margin: 10px 0; /* 30px en la parte superior e inferior, 0 en los lados */
 }
 
+/*Contacto*/
+
+.contacto p {
+  margin: 10px 0; /* 30px en la parte superior e inferior, 0 en los lados */
+}
 
 /*Estilo de las secciones*/
 
@@ -217,4 +258,25 @@ section {
 /* Estilo para la sección Contact (contacto) */
 #contact {
   background-color: #f8f8f8; /* Fondo blanco crema */
+}
+
+
+/* Estilo para dispositivos móviles y tabletas */
+@media screen and (max-width: 768px) {
+  /* ... (estilos existentes para dispositivos móviles y tabletas) */
+
+  /* Estilo para el menú de hamburguesa */
+  .hamburguesa {
+    display: block; /* Hace visible el elemento de hamburguesa */
+    cursor: pointer; /* Cambia el cursor a una mano para indicar clicabilidad */
+  }
+
+  nav {
+    display: none; /* Oculta la navegación por defecto */
+    flex-direction: column; /* Cambia la dirección del flex para dispositivos móviles y tabletas */
+  }
+
+  nav.active {
+    display: flex; /* Muestra la navegación cuando la clase active está presente */
+  }
 }
