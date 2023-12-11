@@ -47,7 +47,7 @@ main {
 }
 
 section {
-  margin-bottom: 40px;
+  margin-bottom: 0px;
 }
 
 p {
@@ -103,6 +103,8 @@ footer {
   margin: 20px 0; /* Agrega márgenes arriba y abajo a los elementos de texto */
 }
 
+/*Habilidades*/
+
 .habilidades {
   margin: 30px 0;
   display: flex;
@@ -115,6 +117,8 @@ footer {
   width: auto; /* permite que el ancho se ajuste automáticamente manteniendo la proporción original */
   margin: 10px; /* ajusta el espacio alrededor de cada imagen según tus necesidades */
 }
+
+/*proyectos*/
 
 .projectos ul {
   list-style-type: none;
@@ -146,6 +150,8 @@ footer {
   margin-top: 5px;
 }
 
+/*Análisis*/
+
 .analisis {
   margin: 30px 0;
   display: flex;
@@ -164,7 +170,7 @@ footer {
   margin: 10px; /* ajusta el espacio alrededor de cada imagen según tus necesidades */
 }
 
-
+/*Certificaciones*/
 
 .certificaciones img {
   height: 50px; /* ajusta la altura según tus necesidades */
@@ -174,4 +180,41 @@ footer {
 
 .certificaciones p {
   margin: 10px 0; /* 30px en la parte superior e inferior, 0 en los lados */
+}
+
+
+/*Estilo de las secciones*/
+
+body {
+  margin: 0; /* Elimina el margen */
+  padding: 0; /* Elimina el relleno */
+}
+
+/* Estilo para todas las secciones */
+section {
+  padding: 50px; /* Agrega un relleno interno para separar contenido del borde */
+}
+
+
+/* Estilo para la sección About (vision) */
+#about {
+  background-color: #f8f8f8; /* Fondo blanco crema */
+}
+
+
+/* Estilo para la sección Projects (projectos) */
+#projects {
+  background-color: #f8f8f8; /* Fondo blanco crema */
+}
+
+
+/* Estilo para la sección Certifications (certificaciones) */
+#certifications {
+  background-color: #f8f8f8; /* Fondo blanco crema */
+}
+
+
+/* Estilo para la sección Contact (contacto) */
+#contact {
+  background-color: #f8f8f8; /* Fondo blanco crema */
 }
