@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KPCA</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="../script.js"></script>
+    <link rel="stylesheet" href="https://cdn.lineicons.com/2.0/LineIcons.css">
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="hamburguesa">&#9776;</div>
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="#Analisis">PCA y IPCA</a>
+            <a href="#Procesamiento">ETL</a>
+            <a href="#Conclusiones">Conclusiones estratégicas</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="Analisis" class="Analisis">
+            <h2>Análisis PCA y IPCA: Descubriendo Patrones Ocultos en Comportamiento del Consumidor</h2>
+            <p>Los modelos de regresión logística entrenados con PCA e IPCA obtuvieron una exactitud de 0.625 y 0.62167 respectivamente. Esto significa que ambos modelos fueron capaces de predecir correctamente el resultado aproximadamente el 62% de las veces.</p>
+            <h4>Análisis de los Modelos</h4>
+            <h4>PCA</h4>
+            <p>El Análisis de Componentes Principales (PCA) es una técnica de reducción de dimensionalidad que se utiliza para transformar un conjunto de datos de alta dimensionalidad en un conjunto de datos de baja dimensionalidad. En este caso, se utilizó PCA para reducir el conjunto de datos a tres componentes principales.</p>
+            <p>El modelo de regresión logística entrenado con PCA obtuvo una exactitud de 0.625. Esto indica que el modelo fue capaz de predecir correctamente el resultado el 62.5% de las veces.</p>
+            <h4>IPCA</h4>
+            <p>El Análisis de Componentes Principales Incremental (IPCA) es una variante de PCA que se utiliza cuando los datos son demasiado grandes para caber en la memoria. IPCA divide los datos en lotes más pequeños y los procesa de forma incremental.</p>
+            <p>El modelo de regresión logística entrenado con IPCA obtuvo una exactitud de 0.62167. Esto indica que el modelo fue capaz de predecir correctamente el resultado el 62.167% de las veces.</p>
+            <img src="../img/cpa-ipca/pca-ipca.png" class="grafico">
+        </section>
+
+        <section id="Procesamiento" class="proyectos">
+            <h2>Procesamiento de Datos</h2>
+            <h3>Procesamiento de Datos con PCA</h3>
+            <p>1. Se eliminaron las columnas ‘reordered’, ‘department’ y ‘product_name’ del conjunto de datos.</p>
+            <p>2. Se estandarizaron las características utilizando StandardScaler().</p>
+            <img src="../img/cpa-ipca/pca_1.png" class="grafico">
+            <p>3. Se dividió el conjunto de datos en conjuntos de entrenamiento y prueba utilizando train_test_split().</p>
+            <p>4. Se manejaron los valores faltantes (NaN) en los conjuntos de entrenamiento utilizando SimpleImputer(strategy='mean').</p>
+            <img src="../img/cpa-ipca/pca_2.png" class="grafico">
+            <p>5. Se aplicó PCA a los conjuntos de entrenamiento sin valores faltantes.</p>
+            <p>6. Se manejaron los valores faltantes (NaN) en los conjuntos de prueba utilizando el mismo SimpleImputer que se ajustó en el conjunto de entrenamiento.</p>
+            <img src="../img/cpa-ipca/pca_3.png" class="grafico">
+            <p>7. Se aplicó PCA a los conjuntos de prueba sin valores faltantes utilizando el mismo PCA que se ajustó en el conjunto de entrenamiento.</p>
+            <h3>Procesamiento de Datos con IPCA</h3>
+            <p>1. Eliminación de columnas: Se eliminaron las columnas ‘reordered’, ‘department’ y ‘product_name’ del conjunto de datos. Estas columnas se consideraron irrelevantes para el modelo de regresión logística.</p>
+            <p>2. Estandarización: Se estandarizaron las características utilizando StandardScaler(). La estandarización es un paso crucial en el preprocesamiento de datos ya que los modelos de aprendizaje automático suelen tener un mejor rendimiento cuando todas las características están en la misma escala.</p>
+            <p>3. División de datos: Se dividió el conjunto de datos en conjuntos de entrenamiento y prueba utilizando train_test_split(). Esta es una práctica común en el aprendizaje supervisado para evaluar la capacidad del modelo para generalizar a datos no vistos.</p>
+            <img src="../img/cpa-ipca/ipca_1.png" class="grafico">
+            <p>4. Manejo de valores faltantes: Se manejaron los valores faltantes (NaN) en los conjuntos de entrenamiento utilizando SimpleImputer(strategy='mean'). Los valores faltantes pueden causar problemas con muchos modelos de aprendizaje automático, por lo que es importante manejarlos antes de entrenar el modelo.</p>
+            <p>5. Aplicación de IPCA: Se aplicó IPCA a los conjuntos de entrenamiento sin valores faltantes. IPCA es una variante de PCA que se utiliza cuando los datos son demasiado grandes para caber en la memoria. IPCA divide los datos en lotes más pequeños y los procesa de forma incremental. Esto puede ser beneficioso cuando se trabaja con grandes conjuntos de datos ya que puede reducir el uso de memoria y acelerar el tiempo de procesamiento.</p>
+            <p>6. Manejo de valores faltantes en los datos de prueba: Se manejaron los valores faltantes (NaN) en los conjuntos de prueba utilizando el mismo SimpleImputer que se ajustó en el conjunto de entrenamiento. Es importante utilizar el mismo imputador para evitar la fuga de datos.</p>
+            <p>7. Aplicación de IPCA a los datos de prueba: Se aplicó IPCA a los conjuntos de prueba sin valores faltantes utilizando el mismo IPCA que se ajustó en el conjunto de entrenamiento. Al igual que con el imputador, es importante utilizar el mismo IPCA para evitar la fuga de datos.</p>
+            <img src="../img/cpa-ipca/ipca_2.png" class="grafico">
+            <p>Es importante recordar que tanto PCA como IPCA deben ser ajustados solo en el conjunto de entrenamiento para evitar la fuga de datos. Luego, estos ajustes se utilizan para transformar tanto el conjunto de entrenamiento como el de prueba. Esto asegura que el modelo se evalúa de manera justa en datos no vistos.</p>
+        </section>
+
+        <section id="Conclusiones" class="proyectos">
+            <h2>Conclusiones:</h2>
+            <p>Ambos modelos, PCA e IPCA, obtuvieron resultados similares en términos de exactitud. Sin embargo, la elección entre PCA e IPCA dependerá del tamaño de los datos y de las limitaciones de memoria. Si los datos son demasiado grandes para caber en la memoria, IPCA puede ser una mejor opción.</p>
+            <p>La gráfica de la varianza explicada muestra cuánta información (varianza) puede ser atribuida a cada uno de los componentes principales. Esto es útil para entender la importancia de cada componente y para decidir cuántos componentes se deben mantener.</p>
+            <p>Es importante recordar que aunque la exactitud es una medida útil de rendimiento, no es la única. También se deben considerar otras métricas como la precisión, la exhaustividad y el área bajo la curva ROC (AUC-ROC). Además, se debe realizar una validación cruzada para asegurar que el modelo es robusto y generaliza bien a datos no vistos.</p>
+            <p>Finalmente, es importante tener en cuenta que estos resultados son específicos para este conjunto de datos y para estos modelos. Los resultados pueden variar con diferentes conjuntos de datos o con diferentes modelos. Por lo tanto, siempre es importante probar diferentes técnicas y modelos para encontrar la mejor solución para un problema específico.</p>
+        </section>
+    </main>
+</body>
+</html>
+
+

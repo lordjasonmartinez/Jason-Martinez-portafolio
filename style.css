@@ -295,3 +295,17 @@ section {
   }
 }
 
+/* Estilo para graficos de los análisis' */
+.grafico {
+  width: 100%;
+  height: auto;
+}
+
+.codigo {
+  background-color: #000000;  /* Color de fondo: negro */
+  color: #FFCE30;  /* Color del texto: amarillo */
+  padding: 20px;  /* Relleno alrededor del texto: 20 píxeles */
+  font-family: 'Courier New', monospace;  /* Tipo de letra: Courier New o cualquier tipo de letra monoespaciada */
+  border: 2px solid #FFCE30;  /* Borde sólido amarillo de 2 píxeles */
+  border-radius: 10px;  /* Bordes redondeados con un radio de 10 píxeles */
+}
