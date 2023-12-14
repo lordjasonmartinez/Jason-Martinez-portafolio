@@ -156,14 +156,9 @@ footer {
 /*Análisis*/
 
 .analisis {
-  margin: 30px 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: center; /* Centra horizontalmente */
-}
-
-.analisis p {
-  margin: 10px 0; /* 30px en la parte superior e inferior, 0 en los lados */
 }
 
 .analisis img {
@@ -174,47 +169,33 @@ footer {
 
 /*Certificaciones*/
 
+.certificaciones-container {
+  display: flex; /* Utiliza un contenedor flex para organizar los elementos */
+  flex-direction: row; /* Organiza los elementos en una fila */
+  justify-content: space-around; /* Espaciado uniforme entre los elementos */
+  align-items: center; /* Centra verticalmente los elementos */
+}
+
 .certificaciones img {
-  height: 50px; /* ajusta la altura según tus necesidades */
-  width: auto; /* permite que el ancho se ajuste automáticamente manteniendo la proporción original */
-  margin: 10px; /* ajusta el espacio alrededor de cada imagen según tus necesidades */
+  height: 50px; /* Ajusta la altura según tus necesidades */
+  width: auto; /* Permite que el ancho se ajuste automáticamente manteniendo la proporción original */
+  margin: 10px; /* Ajusta el espacio alrededor de cada imagen según tus necesidades */
+  order: 1; /* Coloca la imagen a la izquierda */
 }
 
 .certificaciones p {
-  margin: 10px 0; /* 30px en la parte superior e inferior, 0 en los lados */
+  margin: 10px 0; /* 10px en la parte superior e inferior, 0 en los lados */
+  order: 2; /* Coloca el párrafo a la derecha */
 }
-
-
-/*Estilo de las secciones*/
-
-body {
-  margin: 0; /* Elimina el margen */
-  padding: 0; /* Elimina el relleno */
-}
-
 
 /* Estilo para la sección About (vision) */
-#about {
-  background-color: #f8f8f8; /* Fondo blanco crema */
-}
-
-
-/* Estilo para la sección Projects (projectos) */
-#projects {
-  background-color: #f8f8f8; /* Fondo blanco crema */
-}
-
-
-/* Estilo para la sección Certifications (certificaciones) */
-#certifications {
-  background-color: #f8f8f8; /* Fondo blanco crema */
-}
-
-
-/* Estilo para la sección Contact (contacto) */
+#about,
+#projects,
+#certifications,
 #contact {
   background-color: #f8f8f8; /* Fondo blanco crema */
 }
+
 
 
 
@@ -237,11 +218,62 @@ body {
     visibility: visible;
     height: auto;
   }
+  .proyectos-container {
+    position: relative;
+  }
+
   .proyectos ul {
     display: flex; /* Usa un contenedor flex para los proyectos */
     flex-direction: row; /* Los proyectos se muestran en una fila */
     overflow-x: auto; /* Permitir desplazamiento horizontal */
     white-space: nowrap; /* Evitar que los elementos se envuelvan en nuevas líneas */
+    margin-bottom: 0; /* Eliminar margen inferior */
+  }
+
+  .proyectos-container::before,
+  .proyectos-container::after {
+    content: '\2190'; /* Código Unicode para la flecha izquierda */
+    position: absolute;
+    top: 50%;
+    font-size: 24px;
+    color: #000;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+  }
+
+  .proyectos-container {
+    position: relative;
+  }
+
+  .proyectos ul {
+    display: flex; /* Usa un contenedor flex para los proyectos */
+    flex-direction: row; /* Los proyectos se muestran en una fila */
+    overflow-x: auto; /* Permitir desplazamiento horizontal */
+    white-space: nowrap; /* Evitar que los elementos se envuelvan en nuevas líneas */
+    margin-bottom: 0; /* Eliminar margen inferior */
+  }
+
+  .proyectos-container::before,
+  .proyectos-container::after {
+    content: '\2190'; /* Código Unicode para la flecha izquierda */
+    position: absolute;
+    top: 50%;
+    font-size: 24px;
+    color: #000;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+  }
+
+  .proyectos-container::after {
+    content: '\2192'; /* Código Unicode para la flecha derecha */
+    right: 0;
+  }
+
+  .proyectos-container:hover::before,
+  .proyectos-container:hover::after {
+    opacity: 1;
   }
 
   .proyectos li {
