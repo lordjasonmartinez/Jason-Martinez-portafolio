@@ -1,49 +1,14 @@
-// Document ready
-$(function() {
+// script.js
 
-    // Banner
-  
-    // Animate the banner image
-    var bannerImage = $("#banner-image");
-    bannerImage.css("background-image", "url(assets/img/yan-holtz.jpg)");
-    bannerImage.animate({
-      width: "100%",
-      height: "100%",
-    }, 1000);
-  
-    // Add a smooth scroll to the banner
-    $("#banner").on("click", function() {
-      $("html, body").animate({
-        scrollTop: $("#about").offset().top,
-      }, 1000);
-    });
-  
-    // About section
-  
-    // Add a smooth scroll to the about section
-    $("#about").on("click", function() {
-      $("html, body").animate({
-        scrollTop: $("#about").offset().top,
-      }, 1000);
-    });
-  
-    // Projects section
-  
-    // Add a smooth scroll to the projects section
-    $("#projects").on("click", function() {
-      $("html, body").animate({
-        scrollTop: $("#projects").offset().top,
-      }, 1000);
-    });
-  
-    // Contact section
-  
-    // Add a smooth scroll to the contact section
-    $("#contact").on("click", function() {
-      $("html, body").animate({
-        scrollTop: $("#contact").offset().top,
-      }, 1000);
-    });
-  
+// Agrega un evento de clic a la hamburguesa para alternar la clase active en el menú
+document.querySelector('.hamburguesa').addEventListener('click', function () {
+  document.querySelector('nav').classList.toggle('active');
+});
+
+// Agrega un evento de clic a todos los enlaces dentro del menú
+document.querySelectorAll('nav a').forEach(function (enlace) {
+  enlace.addEventListener('click', function () {
+    // Oculta el menú al hacer clic en un enlace
+    document.querySelector('nav').classList.remove('active');
   });
-  
+});

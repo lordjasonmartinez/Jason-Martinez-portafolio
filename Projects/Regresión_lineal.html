@@ -16,83 +16,73 @@
         <div class="hamburguesa">&#9776;</div>
         <nav>
             <a href="../index.html">Home</a>
-            <a href="#KPCA">KPCA</a>
-            <a href="#Precision">Precisión del Modelo</a>
-            <a href="#Limpieza">ETL</a>
-            <a href="#Conclusiones">Conclusiones Estratégicas</a>
+            <a href="#Analisis">Análisis</a>
+            <a href="#Proceso">ETL</a>
+            <a href="#Resultados">Resultados</a>
+            <a href="#Interpretacion">Interpretación</a>
+            <a href="#Consideraciones">Consideraciones</a>
+            <a href="#Repositorio">Repositorio</a>
         </nav>
     </header>
 
     <main>
-        <section id="KPCA" class="Analisis">
-            <h2>Análisis KPCA: Descubriendo Patrones Ocultos en Comportamiento del Consumidor</h2>
-            <p>En este proyecto, exploré el dataset de comportamiento del consumidor en un entorno de comercio electrónico. El objetivo principal era identificar patrones subyacentes en los datos para mejorar la predicción de productos "reordenados".</p>
-            <h4>Validando el modelo KPCA</h4>
-            <p>La técnica de reducción de dimensionalidad Kernel Principal Component Analysis (KPCA) se utilizó para transformar los datos de alta dimensión en un espacio de menor dimensión, manteniendo la mayor cantidad de información posible. KPCA es particularmente útil cuando los datos no son linealmente separables, ya que utiliza funciones de kernel para mapear los datos en un espacio de características de mayor dimensión donde son linealmente separables. Los beneficios de usar KPCA incluyen una mejor visualización de los datos, una eficiencia computacional mejorada debido a la reducción de la dimensionalidad y una mejora en el rendimiento de los algoritmos de aprendizaje automático al reducir el ruido y la redundancia en los datos.</p>
+        <section id="Analisis" class="proyectos">
+            <h2>Análisis del Uso de Modelos Lasso y Ridge en la Predicción de Calorías en Productos de Starbucks</h2>
+            <p>En este análisis, exploramos el uso de dos técnicas de regularización, Lasso y Ridge, para predecir la cantidad de calorías en productos de Starbucks. La base de datos utilizada contiene información nutricional, centrándonos en diversos nutrientes para realizar nuestras predicciones. Los resultados y hallazgos proporcionan una visión detallada de cómo estos modelos pueden ser útiles en la industria alimentaria para comprender y controlar las calorías en productos.</p>
+            <h4>Base de Datos Utilizada</h4>
+            <p>La base de datos se compone de 242 productos de Starbucks, con 9 atributos nutricionales como Total Fat, Saturated Fat, Sodium, etc. El objetivo es predecir la cantidad de calorías de estos productos.</p>
+            <h4>Modelos utilizados</h4>
+            <p>1. Regresión Lineal: Es un modelo estadístico que examina la relación lineal entre dos (Regresión Lineal Simple) o más variables (Regresión Lineal Múltiple): una variable dependiente y una variable independiente. En otras palabras, la regresión lineal predice la variable dependiente basándose en los valores de la(s) variable(s) independiente(s).</p>
+            <p>2. Lasso (Least Absolute Shrinkage and Selection Operator): Es una versión modificada de la regresión lineal, que utiliza una técnica llamada “regularización” para mejorar la precisión de las predicciones. Lasso agrega una penalización a los coeficientes de la regresión para evitar el sobreajuste y puede hacer que algunos coeficientes se reduzcan a cero, lo que ayuda en la selección de características.</p>
+            <p>3. Ridge: Al igual que Lasso, Ridge es una versión modificada de la regresión lineal que utiliza la regularización. Sin embargo, a diferencia de Lasso, Ridge no reduce los coeficientes a cero. Esto significa que todos los atributos se incluyen en el modelo, pero la regularización ayuda a reducir el impacto de las variables menos importantes.</p>
+            <img src="../img/Regresión_lineal/lasso_ridge_1.png" class="grafico">
         </section>
 
-        <section id="Precision" class="proyectos">
-            <h2>Resultados Impactantes: Descifrando el Comportamiento del Consumidor con KPCA</h2>
-            <p>En este proyecto, los resultados obtenidos revelan hallazgos significativos sobre el comportamiento del consumidor en el entorno de comercio electrónico. La aplicación de Kernel PCA (KPCA) permitió descubrir patrones complejos que son cruciales para entender y predecir las decisiones de compra.</p>
-            <img src="../img/kpca/kpca_1.png" class="grafico">
-            <h4>Precisión del Modelo:</h4>
-            <p>El modelo de regresión logística entrenado con los componentes principales obtenidos a través de KPCA logró una sorprendente exactitud del 62.83%. Esta precisión valida la utilidad de la información contenida en los componentes principales para predecir con éxito si un producto será "reordenado" por un consumidor.</p>
+        <section id="Proceso" class="proyectos">
+            <h2>Proceso de Tratamiento de Datos</h2>
+            <p>1. Carga de Datos: La información se carga desde un archivo CSV utilizando la biblioteca pandas.</p>
+            <p>2. Selección de Atributos: Se seleccionan atributos clave relacionados con la cantidad de calorías.</p>
+            <p>3. División de Conjuntos: Los datos se dividen en conjuntos de entrenamiento y prueba (75% - 25%).</p>
+            <p>4. Modelado: Se implementan modelos de regresión lineal, Lasso y Ridge utilizando scikit-learn.</p>
+            <img src="../img/Regresión_lineal/lasso_ridge_2.png" class="grafico">
         </section>
         
-        <section id="Limpieza" class="Limpieza">
-            <h2>Limpieza y Preprocesamiento de Datos:</h2>
-            <p>Eliminé columnas irrelevantes ('reordered', 'department', 'product_name') y manejé los valores faltantes utilizando la estrategia de imputación de la media. Normalicé los datos utilizando StandardScaler para garantizar consistencia en la escala.</p>
-            <pre class="codigo" style="background-color: #000; color: #FFCE30; padding: 0px;">
-                <code>
-                columns_to_drop = ['reordered', 'department', 'product_name']
-                dt_features = dt_Ecommerce.drop(columns=columns_to_drop, axis=1)
-                dt_target = dt_Ecommerce['reordered']
-                dt_features = StandardScaler().fit_transform(dt_features)
-                </code>
-            </pre>
-            <h4>Análisis Principal de Componentes (PCA):</h4>
-            <p>Aplicando PCA, reduje la dimensionalidad del conjunto de datos a 2 componentes principales. Esto permitió una representación visual de la variabilidad de los datos en un espacio bidimensional.</p>
-            <p> python
-                Copy code
-                pca = PCA(n_components=2)
-                X_train_pca = pca.fit_transform(X_train_imputed)
+        <section id="Resultados" class="proyectos">
+            <h2>Resultados y Evaluación del Modelo</h2>
+            <p>Se evaluaron los modelos utilizando la métrica de pérdida cuadrática media (MSE) en el conjunto de prueba:</p>
+            <p>•	Regresión Lineal (MSE): 58.09
+                •	Lasso (MSE): 58.29
+                •	Ridge (MSE): 58.22
             </p>
-            <img src="../img/kpca/kpca_2.png" class="grafico">
-            <h4>Kernel PCA (KPCA): Descubriendo Estructuras No Lineales:</h4>
-            <p>Dado que los datos pueden contener patrones no lineales, apliqué Kernel PCA para capturar relaciones más complejas. Utilicé el kernel
-            <p> python
-                Copy code
-                kpca = KernelPCA(n_components=2, fit_inverse_transform=False)
-                X_train_kpca = kpca.fit_transform(X_train_pca)
-            </p>
+            <p>Los coeficientes obtenidos para Lasso y Ridge proporcionan información sobre la importancia de cada atributo en la predicción de calorías.</p>
+            <img src="../img/Regresión_lineal/lasso_ridge_3.png" class="grafico">
         </section>
 
-        <section id="Modelado" class="proyectos">
-            <h2>Modelado y Evaluación:</h2>
-            <p>Entrené un modelo de regresión logística utilizando los componentes principales obtenidos con KPCA y evalué su rendimiento en un conjunto de prueba.</p>
-            <p> python
-                Copy code
-                logistic = LogisticRegression(solver='lbfgs')
-                logistic.fit(X_train_kpca, y_train)
-                accuracy = logistic.score(X_test_kpca, y_test)
-                print(f"Exactitud del modelo: {accuracy}")
+        <section id="Interpretacion" class="proyectos">
+            <h2>Interpretación de Coeficientes</h2>
+            <p> 
+                • Coeficientes Lasso: Algunos coeficientes son reducidos a cero, lo que sugiere la eliminación de ciertos atributos en la predicción.
+                • Coeficientes Ridge: Todos los atributos contribuyen al modelo, aunque algunos pueden ser penalizados en menor medida.
             </p>
-            <p>La exactitud del modelo fue del 62.83%, indicando que la información contenida en los componentes principales logra predecir con precisión el comportamiento de "reordenado".</p>
-            <h4>Visualización de Resultados:</h4>
-            <p>Para una presentación visual impactante, creé gráficos de dispersión para comparar las predicciones del modelo con las etiquetas reales en el espacio de los dos primeros componentes principales. Además, agregué leyendas para facilitar la interpretación.</p>
-            <p>La visualización de las predicciones del modelo y las etiquetas reales en un espacio bidimensional proporciona una representación gráfica clara de la capacidad del modelo para distinguir entre diferentes categorías de comportamiento del consumidor. Este enfoque simplificado facilita la interpretación y toma de decisiones, proporcionando una herramienta valiosa para estrategias de marketing y gestión de inventario.</p>
-            <img src="../img/kpca/kpca_3.png" class="grafico">
-            <h4>Predicciones del Modelo y Etiquetas Reales:</h4>
-            <p>Estos gráficos resaltan la capacidad del modelo para distinguir entre las categorías "reordenado" y "no reordenado" en un espacio de menor dimensión, lo que facilita la interpretación y toma de decisiones.</p>
+            <h3>Conclusiones</h3>
+            <p> 
+                •	Ambos modelos Lasso y Ridge ofrecen resultados similares en términos de pérdida.
+                •	La regularización puede ser útil para seleccionar características clave y controlar la complejidad del modelo.
+                •	La interpretación de los coeficientes proporciona información sobre la influencia de cada nutriente en la predicción.
+            </p>
+            <img src="../img/Regresión_lineal/lasso_ridge_4.png" class="grafico">
         </section>
 
-        <section id="Conclusiones" class="grafico">
-            <h2>Conclusiones Estratégicas:</h2>
-            <p>Los resultados obtenidos a través del análisis KPCA ofrecen una perspicacia crucial para las estrategias comerciales. La identificación de patrones no lineales en el comportamiento del consumidor puede informar decisiones estratégicas, como ajustes en inventario, campañas de marketing personalizadas y mejoras en la experiencia del usuario. Este enfoque no solo mejora la eficacia de las predicciones, sino que también brinda una comprensión más profunda de los factores que influyen en las decisiones de compra.</p>
-            <p>En resumen, estos resultados impactantes subrayan la relevancia y aplicabilidad práctica de la metodología KPCA en el análisis de comportamiento del consumidor. Estos hallazgos ofrecen una base sólida para la toma de decisiones informada y estratégica en el ámbito del comercio electrónico.</p>
+        <section id="Consideraciones" class="proyectos">
+            <h2>Consideraciones Adicionales</h2>
+            <p>Este análisis destaca la importancia de comprender cómo los modelos pueden influir en la toma de decisiones en la industria alimentaria, especialmente en la gestión de calorías en productos de consumo masivo. Sin embargo, es esencial considerar otros factores y realizar evaluaciones adicionales para obtener una imagen completa de la aplicabilidad de estos modelos.</p>
         </section>
+
+        <section id="Repositorio" class="proyectos">
+            <h2>Repositorio</h2>
+            <p>Si deseas validar cómo se construyó el algoritmo y la base de datos, puedes visitar el siguiente enlace. Allí encontrarás todos los detalles del código y los datos utilizados en este proyecto.</p>
+            <a href="https://github.com/Lordjasonmartinez/Lasso-Ridge">👉 Haz clic aquí 👈</a>
+        </section>  
     </main>
 </body>
 </html>
-
-

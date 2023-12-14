@@ -11,10 +11,6 @@ body {
 
 /*Menu de navegación*/
 
-.contenido-principal {
-  margin-top: 0px; /* Asegúrate de ajustar este valor según la altura de tu menú */
-}
-
 header {
   background-color: #333;
   color: #fff;
@@ -24,10 +20,6 @@ header {
   width: 100%;
   top: 0;
   z-index: 1000; /* asegura que esté por encima de otros elementos */
-}
-
-main {
-  padding-top: 60px; /* Ajusta según la altura de tu encabezado */
 }
 
 nav {
@@ -53,21 +45,30 @@ nav a:hover {
 }
 
 
-
-
-
 main {
   max-width: 800px;
   margin: 20px auto;
   padding: 20px;
 }
 
+/* Estilo para todas las secciones */
 section {
-  margin-bottom: 0px;
+  padding: 45px; /* Agrega un relleno interno para separar contenido del borde */
 }
 
 p {
   color: #555;
+  margin-bottom: 20px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 60px
+}
+
+h4 {
+  margin-bottom: 20px;
 }
 
 ul {
@@ -76,10 +77,6 @@ ul {
 
 ul li {
   margin-bottom: 10px;
-}
-
-a {
-  color: #007BFF;
 }
 
 footer {
@@ -112,23 +109,8 @@ footer {
   margin-top: 100px
 }
 
-.banner h1, .banner h2, .banner p {
-  margin: 20px 0; /* Agrega márgenes arriba y abajo a los elementos de texto */
-}
-
-.vision h1, .vision h2, .vision p {
-  margin: 20px 0; /* Agrega márgenes arriba y abajo a los elementos de texto */
-}
-
-.vision h2 {
-  margin-top: 100px
-}
 
 /*Habilidades*/
-
-.habilidades h2 {
-  margin-top: 100px
-}
 
 .habilidades {
   margin: 30px 0;
@@ -144,10 +126,6 @@ footer {
 }
 
 /*proyectos*/
-
-.proyectos h2 {
-  margin-top: 100px
-}
 
 .proyectos ul {
   list-style-type: none;
@@ -175,15 +153,7 @@ footer {
   height: auto; /* Se ajusta automáticamente la altura para mantener la proporción */
 }
 
-.proyectos p {
-  margin-top: 5px;
-}
-
 /*Análisis*/
-
-.analisis h2 {
-  margin-top: 100px
-}
 
 .analisis {
   margin: 30px 0;
@@ -204,10 +174,6 @@ footer {
 
 /*Certificaciones*/
 
-.certificaciones h2{
-  margin-top: 100px
-}
-
 .certificaciones img {
   height: 50px; /* ajusta la altura según tus necesidades */
   width: auto; /* permite que el ancho se ajuste automáticamente manteniendo la proporción original */
@@ -218,22 +184,12 @@ footer {
   margin: 10px 0; /* 30px en la parte superior e inferior, 0 en los lados */
 }
 
-/*Contacto*/
-
-.contacto p {
-  margin: 10px 0; /* 30px en la parte superior e inferior, 0 en los lados */
-}
 
 /*Estilo de las secciones*/
 
 body {
   margin: 0; /* Elimina el margen */
   padding: 0; /* Elimina el relleno */
-}
-
-/* Estilo para todas las secciones */
-section {
-  padding: 50px; /* Agrega un relleno interno para separar contenido del borde */
 }
 
 
@@ -261,6 +217,7 @@ section {
 }
 
 
+
 /* Estilo para dispositivos móviles y tabletas */
 @media screen and (max-width: 768px) {
   .hamburguesa {
@@ -280,6 +237,33 @@ section {
     visibility: visible;
     height: auto;
   }
+  .proyectos ul {
+    display: flex; /* Usa un contenedor flex para los proyectos */
+    flex-direction: row; /* Los proyectos se muestran en una fila */
+    overflow-x: auto; /* Permitir desplazamiento horizontal */
+    white-space: nowrap; /* Evitar que los elementos se envuelvan en nuevas líneas */
+  }
+
+  .proyectos li {
+    width: 100vw; /* Ocupa el 100% del ancho de la pantalla */
+    min-width: 100%; /* Garantiza que el ancho sea al menos del 100% */
+    margin-right: 10px; /* Agregar margen entre los proyectos */
+  }
+
+  .proyectos img {
+    width: 100%; /* Hacer que las imágenes ocupen el 100% del ancho */
+    height: auto; /* Mantener la proporción de aspecto */
+  }
+
+  .proyectos a {
+    display: block; /* Hacer que los enlaces ocupen todo el ancho del contenedor */
+    text-align: center; /* Centrar el texto */
+    padding: 10px; /* Añadir espacio alrededor del texto */
+    color: #000; /* Color del texto */
+    text-decoration: none; /* Eliminar subrayado del enlace */
+    overflow: hidden; /* Ocultar cualquier contenido que se desborde */
+    text-overflow: ellipsis; /* Mostrar puntos suspensivos (...) si el texto es demasiado largo */
+  }
 }
 
 /* Oculta el icono de hamburguesa en pantallas más grandes */
@@ -293,19 +277,19 @@ section {
     height: auto;
     display: flex;
   }
-}
 
-/* Estilo para graficos de los análisis' */
-.grafico {
-  width: 100%;
-  height: auto;
-}
+  /* Estilo para graficos de los análisis' */
+  .grafico {
+    width: 100%;
+    height: auto;
+  }
 
-.codigo {
-  background-color: #000000;  /* Color de fondo: negro */
-  color: #FFCE30;  /* Color del texto: amarillo */
-  padding: 20px;  /* Relleno alrededor del texto: 20 píxeles */
-  font-family: 'Courier New', monospace;  /* Tipo de letra: Courier New o cualquier tipo de letra monoespaciada */
-  border: 2px solid #FFCE30;  /* Borde sólido amarillo de 2 píxeles */
-  border-radius: 10px;  /* Bordes redondeados con un radio de 10 píxeles */
+  .codigo {
+    background-color: #000000;  /* Color de fondo: negro */
+    color: #FFCE30;  /* Color del texto: amarillo */
+    padding: 20px;  /* Relleno alrededor del texto: 20 píxeles */
+    font-family: 'Courier New', monospace;  /* Tipo de letra: Courier New o cualquier tipo de letra monoespaciada */
+    border: 2px solid #FFCE30;  /* Borde sólido amarillo de 2 píxeles */
+    border-radius: 10px;  /* Bordes redondeados con un radio de 10 píxeles */
+  }
 }
