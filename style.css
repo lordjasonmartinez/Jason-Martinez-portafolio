@@ -207,6 +207,40 @@ footer {
   color: #fff;
 }
 
+/*Contacto*/
+
+.contacto {
+  background-color: #f9f9f9;  /* Color de fondo claro */
+  padding: 20px;  /* Relleno alrededor del contenido */
+  border-radius: 10px;  /* Bordes redondeados */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);  /* Sombra alrededor del contenedor */
+}
+
+.contacto h2 {
+  color: #333;  /* Color del título */
+  text-align: center;  /* Centrar el título */
+}
+
+.contacto p {
+  color: #666;  /* Color del texto */
+  line-height: 1.6;  /* Espacio entre líneas */
+}
+
+.contacto a {
+  color: #333;  /* Color del enlace */
+  text-decoration: none;  /* Eliminar el subrayado del enlace */
+}
+
+.contacto a:hover {
+  color: #FFCE30;  /* Cambiar el color del enlace al pasar el cursor */
+}
+
+.contacto i {
+  color: #FFCE30;  /* Color del icono */
+  font-size: 24px;  /* Tamaño del icono */
+}
+
+
 
 /* Estilo de cambio de tonalidad de fondo */
 #about,
