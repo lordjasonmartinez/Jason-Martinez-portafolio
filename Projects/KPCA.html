@@ -26,14 +26,14 @@
 <script src="../script.js"></script>
 
     <main>
-        <section id="KPCA" class="proyectos">
+        <section id="KPCA">
             <h2>Análisis KPCA: Descubriendo Patrones Ocultos en Comportamiento del Consumidor</h2>
             <p>En este proyecto, exploré el dataset de comportamiento del consumidor en un entorno de comercio electrónico. El objetivo principal era identificar patrones subyacentes en los datos para mejorar la predicción de productos "reordenados".</p>
             <h4>Validando el modelo KPCA</h4>
             <p>La técnica de reducción de dimensionalidad Kernel Principal Component Analysis (KPCA) se utilizó para transformar los datos de alta dimensión en un espacio de menor dimensión, manteniendo la mayor cantidad de información posible. KPCA es particularmente útil cuando los datos no son linealmente separables, ya que utiliza funciones de kernel para mapear los datos en un espacio de características de mayor dimensión donde son linealmente separables. Los beneficios de usar KPCA incluyen una mejor visualización de los datos, una eficiencia computacional mejorada debido a la reducción de la dimensionalidad y una mejora en el rendimiento de los algoritmos de aprendizaje automático al reducir el ruido y la redundancia en los datos.</p>
         </section>
 
-        <section id="Precision" class="proyectos">
+        <section id="Precision">
             <h2>Resultados Impactantes: Descifrando el Comportamiento del Consumidor con KPCA</h2>
             <p>En este proyecto, los resultados obtenidos revelan hallazgos significativos sobre el comportamiento del consumidor en el entorno de comercio electrónico. La aplicación de Kernel PCA (KPCA) permitió descubrir patrones complejos que son cruciales para entender y predecir las decisiones de compra.</p>
             <img src="../img/kpca/kpca_1.png" class="grafico">
@@ -41,44 +41,47 @@
             <p>El modelo de regresión logística entrenado con los componentes principales obtenidos a través de KPCA logró una sorprendente exactitud del 62.83%. Esta precisión valida la utilidad de la información contenida en los componentes principales para predecir con éxito si un producto será "reordenado" por un consumidor.</p>
         </section>
         
-        <section id="Limpieza" class="  Limpieza">
+        <section id="Limpieza">
             <h2>Limpieza y Preprocesamiento de Datos:</h2>
             <p>Eliminé columnas irrelevantes ('reordered', 'department', 'product_name') y manejé los valores faltantes utilizando la estrategia de imputación de la media. Normalicé los datos utilizando StandardScaler para garantizar consistencia en la escala.</p>
-            <pre class="codigo" style="background-color: #000; color: #FFCE30; padding: 0px;">
+            <pre class="codigo">
                 <code>
-                columns_to_drop = ['reordered', 'department', 'product_name']
-                dt_features = dt_Ecommerce.drop(columns=columns_to_drop, axis=1)
-                dt_target = dt_Ecommerce['reordered']
-                dt_features = StandardScaler().fit_transform(dt_features)
+                    columns_to_drop = ['reordered', 'department', 'product_name']
+                    dt_features = dt_Ecommerce.drop(columns=columns_to_drop, axis=1)
+                    dt_target = dt_Ecommerce['reordered']
+                    dt_features = StandardScaler().fit_transform(dt_features)
                 </code>
             </pre>
             <h4>Análisis Principal de Componentes (PCA):</h4>
             <p>Aplicando PCA, reduje la dimensionalidad del conjunto de datos a 2 componentes principales. Esto permitió una representación visual de la variabilidad de los datos en un espacio bidimensional.</p>
-            <p> python
-                Copy code
-                pca = PCA(n_components=2)
-                X_train_pca = pca.fit_transform(X_train_imputed)
-            </p>
+            <pre class="codigo">
+                <code>
+                    pca = PCA(n_components=2)
+                    X_train_pca = pca.fit_transform(X_train_imputed)
+                </code>
+            </pre>
             <img src="../img/kpca/kpca_2.png" class="grafico">
             <h4>Kernel PCA (KPCA): Descubriendo Estructuras No Lineales:</h4>
             <p>Dado que los datos pueden contener patrones no lineales, apliqué Kernel PCA para capturar relaciones más complejas. Utilicé el kernel
-            <p> python
-                Copy code
-                kpca = KernelPCA(n_components=2, fit_inverse_transform=False)
-                X_train_kpca = kpca.fit_transform(X_train_pca)
-            </p>
+            <pre class="codigo">
+                <code>
+                    kpca = KernelPCA(n_components=2, fit_inverse_transform=False)
+                    X_train_kpca = kpca.fit_transform(X_train_pca)
+                </code>
+            </pre>
         </section>
 
-        <section id="Modelado" class="proyectos">
+        <section id="Modelado">
             <h2>Modelado y Evaluación:</h2>
             <p>Entrené un modelo de regresión logística utilizando los componentes principales obtenidos con KPCA y evalué su rendimiento en un conjunto de prueba.</p>
-            <p> python
-                Copy code
+            <pre class="codigo">
+                <code>
                 logistic = LogisticRegression(solver='lbfgs')
                 logistic.fit(X_train_kpca, y_train)
                 accuracy = logistic.score(X_test_kpca, y_test)
                 print(f"Exactitud del modelo: {accuracy}")
-            </p>
+                </code>
+            </pre>
             <p>La exactitud del modelo fue del 62.83%, indicando que la información contenida en los componentes principales logra predecir con precisión el comportamiento de "reordenado".</p>
             <h4>Visualización de Resultados:</h4>
             <p>Para una presentación visual impactante, creé gráficos de dispersión para comparar las predicciones del modelo con las etiquetas reales en el espacio de los dos primeros componentes principales. Además, agregué leyendas para facilitar la interpretación.</p>
@@ -88,15 +91,16 @@
             <p>Estos gráficos resaltan la capacidad del modelo para distinguir entre las categorías "reordenado" y "no reordenado" en un espacio de menor dimensión, lo que facilita la interpretación y toma de decisiones.</p>
         </section>
 
-        <section id="Conclusiones" class="grafico">
+        <section id="Conclusiones">
             <h2>Conclusiones Estratégicas:</h2>
             <p>Los resultados obtenidos a través del análisis KPCA ofrecen una perspicacia crucial para las estrategias comerciales. La identificación de patrones no lineales en el comportamiento del consumidor puede informar decisiones estratégicas, como ajustes en inventario, campañas de marketing personalizadas y mejoras en la experiencia del usuario. Este enfoque no solo mejora la eficacia de las predicciones, sino que también brinda una comprensión más profunda de los factores que influyen en las decisiones de compra.</p>
             <p>En resumen, estos resultados impactantes subrayan la relevancia y aplicabilidad práctica de la metodología KPCA en el análisis de comportamiento del consumidor. Estos hallazgos ofrecen una base sólida para la toma de decisiones informada y estratégica en el ámbito del comercio electrónico.</p>
         </section>
 
-        <section id="Repositorio" class="proyectos">
+        <section id="Repositorio" class="Repositorio">
             <h2>Repositorio</h2>
             <p>Si deseas validar cómo se construyó el algoritmo y la base de datos, puedes visitar el siguiente enlace. Allí encontrarás todos los detalles del código y los datos utilizados en este proyecto.</p>
+            <img src="../media/GitHub.png"  width="100">
             <a href="https://github.com/Lordjasonmartinez/PCA-IPCA">👉 Haz clic aquí 👈</a>
         </section>  
     </main>

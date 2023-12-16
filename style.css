@@ -68,6 +68,7 @@ h2 {
 }
 
 h4 {
+  margin-top: 20px;
   margin-bottom: 20px;
 }
 
@@ -77,6 +78,10 @@ ul {
 
 ul li {
   margin-bottom: 10px;
+}
+
+img {
+  margin-top: 20px;
 }
 
 footer {
@@ -169,26 +174,41 @@ footer {
 
 /*Certificaciones*/
 
-.certificaciones-container {
-  display: flex; /* Utiliza un contenedor flex para organizar los elementos */
-  flex-direction: row; /* Organiza los elementos en una fila */
-  justify-content: space-around; /* Espaciado uniforme entre los elementos */
-  align-items: center; /* Centra verticalmente los elementos */
+.certificaciones {
+  text-align: center;
 }
+
 
 .certificaciones img {
-  height: 50px; /* Ajusta la altura según tus necesidades */
-  width: auto; /* Permite que el ancho se ajuste automáticamente manteniendo la proporción original */
-  margin: 10px; /* Ajusta el espacio alrededor de cada imagen según tus necesidades */
-  order: 1; /* Coloca la imagen a la izquierda */
+  width:10%;
+  max-width: 400px;
+  border-radius: 10px;
+  margin: 10px 0;
 }
 
-.certificaciones p {
-  margin: 10px 0; /* 10px en la parte superior e inferior, 0 en los lados */
-  order: 2; /* Coloca el párrafo a la derecha */
+.certificaciones a img {
+  width: 80%;
+  max-width: 400px;
+  border-radius: 10px;
+  margin: 10px 0;
+  display: inline-block;
 }
 
-/* Estilo para la sección About (vision) */
+.certificaciones a {
+  display: inline-block;
+  margin-bottom: 20px;
+  text-decoration: none;
+  color: #FFCE30;
+  font-size: 1.2em;
+  transition: color 0.3s ease;
+}
+
+.certificaciones a:hover {
+  color: #fff;
+}
+
+
+/* Estilo de cambio de tonalidad de fondo */
 #about,
 #projects,
 #certifications,
@@ -196,7 +216,17 @@ footer {
   background-color: #f8f8f8; /* Fondo blanco crema */
 }
 
+/* Repositorio */
 
+.Repositorio {
+  text-align: center;
+}
+
+.Repositorio img,
+.Repositorio a {
+  display: block;
+  margin: 0 auto;
+}
 
 
 /* Estilo para dispositivos móviles y tabletas */
@@ -296,6 +326,23 @@ footer {
     overflow: hidden; /* Ocultar cualquier contenido que se desborde */
     text-overflow: ellipsis; /* Mostrar puntos suspensivos (...) si el texto es demasiado largo */
   }
+
+  .codigo {
+    background-color: #000000;
+    color: #FFCE30;
+    padding: 1px 1px 1px 7px;  /* Relleno: superior, derecho, inferior, izquierdo */
+    font-family: 'Courier New', monospace;
+    border: 2px solid #FFCE30;
+    border-radius: 10px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+  }
+
+  .grafico {
+    width: 100%;
+    height: auto;
+  }
 }
 
 /* Oculta el icono de hamburguesa en pantallas más grandes */
@@ -311,17 +358,5 @@ footer {
   }
 
   /* Estilo para graficos de los análisis' */
-  .grafico {
-    width: 100%;
-    height: auto;
-  }
-
-  .codigo {
-    background-color: #000000;  /* Color de fondo: negro */
-    color: #FFCE30;  /* Color del texto: amarillo */
-    padding: 20px;  /* Relleno alrededor del texto: 20 píxeles */
-    font-family: 'Courier New', monospace;  /* Tipo de letra: Courier New o cualquier tipo de letra monoespaciada */
-    border: 2px solid #FFCE30;  /* Borde sólido amarillo de 2 píxeles */
-    border-radius: 10px;  /* Bordes redondeados con un radio de 10 píxeles */
-  }
+  
 }
