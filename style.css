@@ -338,6 +338,18 @@ footer {
   height: auto;
 }
 
+.codigo {
+  background-color: #000000;
+  color: #FFCE30;
+  padding: 1px 1px 1px 7px;  /* Relleno: superior, derecho, inferior, izquierdo */
+  font-family: 'Courier New', monospace;
+  border: 2px solid #FFCE30;
+  border-radius: 10px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
 /* Estilo para dispositivos móviles y tabletas */
 @media screen and (max-width: 768px) {
   .hamburguesa {
