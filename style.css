@@ -158,6 +158,44 @@ footer {
   height: auto; /* Se ajusta automáticamente la altura para mantener la proporción */
 }
 
+/*Scroll de los prouectos*/
+
+.container {
+  position: relative;
+}
+
+.container .slider {
+  display: flex;
+  background: #f8f8f8;
+  padding: 2px;
+  width: 600 px;
+  height: 150 px;
+  overflow: hidden;
+}
+
+.container .control {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #02293b;
+  cursor: pointer;
+  object-fit: cover;
+  padding: 10px;
+}
+
+.container .prev {
+  left: 0;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.container .next {
+  right: 0;
+  top: 50%;
+  transform: translate(50%, -50%);
+}
+
 /*Análisis*/
 
 .analisis {
@@ -306,10 +344,6 @@ footer {
     transition: opacity 0.3s ease;
   }
 
-  .proyectos-container {
-    position: relative;
-  }
-
   .proyectos ul {
     display: flex; /* Usa un contenedor flex para los proyectos */
     flex-direction: row; /* Los proyectos se muestran en una fila */
@@ -318,17 +352,6 @@ footer {
     margin-bottom: 0; /* Eliminar margen inferior */
   }
 
-  .proyectos-container::before,
-  .proyectos-container::after {
-    content: '\2190'; /* Código Unicode para la flecha izquierda */
-    position: absolute;
-    top: 50%;
-    font-size: 24px;
-    color: #000;
-    cursor: pointer;
-    opacity: 0.7;
-    transition: opacity 0.3s ease;
-  }
 
   .proyectos-container::after {
     content: '\2192'; /* Código Unicode para la flecha derecha */
@@ -377,6 +400,7 @@ footer {
     width: 100%;
     height: auto;
   }
+
 }
 
 /* Oculta el icono de hamburguesa en pantallas más grandes */
@@ -390,7 +414,5 @@ footer {
     height: auto;
     display: flex;
   }
-
-  /* Estilo para graficos de los análisis' */
   
 }
