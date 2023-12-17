@@ -44,5 +44,3 @@ document.addEventListener('DOMContentLoaded', function () {
 
   showItem(currentItem);
 });
-
-
