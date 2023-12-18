@@ -320,6 +320,32 @@ footer {
   background-color: #ffffff; /* Fondo blanco crema */
 }
 
+/* Testimonio */
+
+#testimonials {
+  background-color: #f9f9f9;
+  padding: 20px;
+  text-align: center; /* Añade esta línea para centrar el texto */
+}
+
+.testimonial {
+  margin-bottom: 20px;
+}
+
+.testimonial img {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  display: block; /* Añade esta línea para permitir el centrado de la imagen */
+  margin-left: auto; /* Añade esta línea para centrar la imagen */
+  margin-right: auto; /* Añade esta línea para centrar la imagen */
+}
+
+.testimonial h3, .testimonial h4, .testimonial p {
+  margin: 0;
+}
+
+
 
 /* Repositorio */
 
@@ -349,6 +375,8 @@ footer {
   word-wrap: break-word;
   white-space: pre-wrap;
 }
+
+
 
 /* Estilo para dispositivos móviles y tabletas */
 @media screen and (max-width: 768px) {
