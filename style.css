@@ -95,13 +95,13 @@ footer {
 }
 
 .profile-image {
-  width: 200px; /* ajusta el tamaño según tus necesidades */
-  height: 200px; /* ajusta el tamaño según tus necesidades */
-  border-radius: 50%; /* hará que el marco sea redondo */
-  display: block; /* esto hace que la imagen sea un bloque */
-  margin: 0 auto; /* esto centra el bloque horizontalmente */
-  /* asegura que la imagen mantenga sus proporciones y se ajuste completamente al contenedor */
+  width: 150px;
+  height: 200px;
+  border-radius: 25% 40% 25% 40%;
+  object-fit: contain;
+  object-position: center;
 }
+
 
 /*Banner*/
 
@@ -130,13 +130,6 @@ footer {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.banner .profile-image {
-  width: 200px; /* Ajusta el tamaño de la imagen según sea necesario */
-  border-radius: 50%; /* Esto hará que la imagen tenga bordes redondeados */
-  margin-bottom: 8px; /* Agrega margen en la parte inferior de la imagen */
-  margin-top: 80px;
 }
 
 

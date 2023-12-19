@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KPCA</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdn.lineicons.com/2.0/LineIcons.css">
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="hamburguesa">&#9776;</div>
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="#Analisis">Análisis Detallado</a>
+            <a href="#Modelo">Modelo Utilizado</a>
+            <a href="#ETL">Proceso ETL</a>
+            <a href="#Conclusiones">Conclusiones Finales</a>
+            <a href="#Repositorio">Repositorio</a>
+        </nav>
+    </header>
+
+<script src="../script.js"></script>
+
+    <main>
+        <section id="Analisis">
+            <h2>Análisis Detallado y Simple del Proyecto</h2>
+            <h3>Cross Validation con DecisionTreeRegressor</h3>
+            <h4>MSE (Error Cuadrático Medio):</h4>
+            <p>
+                - Los resultados del MSE para cada fold fueron: [-0.37781109, -0.38888889, -0.39189189].
+                - El promedio del MSE es de aproximadamente 0.3862.
+            </p>
+            <h3>K-Fold Split</h3>
+            <h4>División K-Fold:</h4>
+            <p>- Se proporcionan los índices de entrenamiento y prueba para cada fold.</p>
+            <img src="../img/optimizacion_parametrica/optimizacion_1.png" class="grafico">
+            <h3>RandomizedSearchCV con RandomForestRegressor</h3>
+            <h4>Mejor Estimador:</h4>
+            <p>- El mejor estimador encontrado por RandomizedSearchCV es un RandomForestRegressor con 5 estimadores y una profundidad máxima de 9.</p>
+            <h4>Mejores Parámetros:</h4>
+            <p>- Los mejores parámetros son: {'n_estimators': 5, 'max_depth': 9, 'criterion': 'squared_error'}.</p>
+            <h4>Predicción para una Muestra:</h4>
+            <p>- La predicción para una muestra específica es de $328.2.</p>
+        </section>
+
+        <section id="Modelo">
+            <h3>Cross Validation con DecisionTreeRegressor</h3>
+            <h2>Modelo Utilizado:</h2>
+            <p> - DecisionTreeRegressor para regresión.</p>
+            <h4>Librerías y Lenguaje de Programación:</h4>
+            <p>
+                - Lenguaje de Programación: Python.
+                - Librerías: pandas para manipulación de datos, sklearn para modelos de regresión y métricas.
+            </p>
+            <h4>Base de Datos:</h4>
+            <p>
+                - El análisis se realizó en un conjunto de datos de comportamiento de consumidores de comercio electrónico (ECommerce_consumer_behaviour.csv).
+            </p>
+
+            <h3>RandomizedSearchCV con RandomForestRegressor</h3>
+            <h2>Modelo Utilizado:</h2>
+            <p> - RandomForestRegressor para regresión.</p>
+            <h4>Librerías y Lenguaje de Programación:</h4>
+            <p>
+                - Lenguaje de Programación: Python.
+                - Librerías: pandas para manipulación de datos, sklearn para modelos de regresión y búsqueda de hiperparámetros.
+            </p>
+            <h4>Base de Datos:</h4>
+            <p>
+                - El análisis se llevó a cabo en un conjunto de datos de información sobre diamantes (diamonds.csv).
+            </p>
+        </section>
+        
+        <section id="ETL">
+            <h2>Proceso ETL:</h2>
+            <h3>Cross Validation con DecisionTreeRegressor</h3>
+            <h4>Carga de Datos:</h4>
+            <p>- Se leyó el conjunto de datos de comportamiento de consumidores de comercio electrónico.</p>
+            <h4>Preprocesamiento:</h4>
+            <p>- Se separaron las características (X) y la variable objetivo (y).</p>
+            <h4>Modelo DecisionTreeRegressor:</h4>
+            <p>- Se utilizó Cross Validation con DecisionTreeRegressor para evaluar el rendimiento del modelo.</p>
+            
+            <h3>RandomizedSearchCV con RandomForestRegressor</h3>
+            <h4>Carga de Datos:</h4>
+            <p>- Se leyó el conjunto de datos de información sobre diamantes.</p>
+            <h4>Preprocesamiento:</h4>
+            <p>- Se separaron las características (X) y la variable objetivo (y).</p>
+            <h4>Modelo RandomForestRegressor</h4>
+            <p>- Se utilizó RandomizedSearchCV para buscar los mejores hiperparámetros del modelo.</p>
+            <img src="../img/optimizacion_parametrica/optimizacion_2.png" class="grafico">
+        </section>
+
+        <section id="Conclusiones">
+            <h2>Conclusiones Finales del Proyecto:</h2>
+            <h4>Cross Validation con DecisionTreeRegressor:</h4>
+            <p>
+                - El MSE proporciona una medida de la calidad del modelo, indicando la magnitud de los errores cuadráticos medios.
+                - La técnica de Cross Validation permite evaluar el rendimiento del modelo en diferentes conjuntos de datos de prueba, proporcionando una visión más robusta del rendimiento del modelo.
+            </p>
+            <h4>RandomizedSearchCV con RandomForestRegressor:</h4>
+            <p>
+                - La búsqueda aleatoria de hiperparámetros reveló que un RandomForestRegressor con 5 estimadores y una profundidad máxima de 9 tiene un buen rendimiento para predecir el precio de los diamantes.
+                - Este proceso ilustra la importancia de ajustar los hiperparámetros para mejorar el rendimiento del modelo.
+            </p>
+            <p>En resumen, la combinación de técnicas como Cross Validation y RandomizedSearchCV permite evaluar y afinar modelos de manera efectiva, proporcionando una base sólida para la toma de decisiones en el análisis de datos.</p>
+        </section>
+
+        <section id="Repositorio" class="Repositorio">
+            <h2>Repositorio</h2>
+            <p>Si deseas validar cómo se construyó el algoritmo y la base de datos, puedes visitar el siguiente enlace. Allí encontrarás todos los detalles del código y los datos utilizados en este proyecto.</p>
+            <img src="../media/GitHub.png"  width="100">
+            <a href="https://github.com/Lordjasonmartinez/optimizacionparametrica">👉 Haz clic aquí 👈</a>
+        </section>  
+    </main>
+</body>
+</html>
+
+

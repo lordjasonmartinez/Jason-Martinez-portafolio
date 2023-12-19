@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KPCA</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdn.lineicons.com/2.0/LineIcons.css">
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="hamburguesa">&#9776;</div>
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="#Analisis">Análisis Detallado</a>
+            <a href="#Modelo">Modelo Utilizado</a>
+            <a href="#ETL">Proceso ETL</a>
+            <a href="#Codigo">Código Aplicado</a>
+            <a href="#Conclusiones">Conclusiones Finales</a>
+            <a href="#Repositorio">Repositorio</a>
+        </nav>
+    </header>
+
+<script src="../script.js"></script>
+
+    <main>
+        <section id="Analisis">
+            <h2>Análisis Detallado y Simple del Proyecto</h2>
+            <h4>K-Means</h4>
+            <p>Para el método de K-Means con MiniBatchKMeans, se obtuvieron 4 clusters. Cada diamante fue asignado a uno de estos clusters, y esta asignación se incluyó como una nueva columna llamada 'group' en el conjunto de datos. Esta agrupación se basa en las características de los diamantes, como carat, depth, table, etc.</p>
+            <h4>Mean-Shift</h4>
+            <p>En el método de Mean-Shift, se utilizó la librería sklearn.cluster para realizar el clustering. Se encontraron dos centroides, y cada diamante se asignó a uno de estos dos grupos. La información de la asignación también se incorporó al conjunto de datos en una nueva columna llamada 'meanshift'.</p>
+            <img src="../img/cluster/cluster_1.png" class="grafico">
+        </section>
+
+        <section id="Modelo">
+            <h2>Modelo Utilizado:</h2>
+            <p> 
+                - Para K-Means: MiniBatchKMeans de sklearn.cluster.
+                - Para Mean-Shift: MeanShift de sklearn.cluster.
+            </p>
+            <h4>Librerías y Lenguaje de Programación:</h4>
+            <p>
+                - Lenguaje de Programación: Python.
+                - Librerías: pandas para manipulación de datos, sklearn para modelos de clustering, y numpy para operaciones numéricas.
+            </p>
+            <h4>Base de Datos:</h4>
+            <p>
+                - La base de datos utilizada es un conjunto de datos de diamantes, almacenado en un archivo CSV (diamonds.csv).
+            </p>
+        </section>
+        
+        <section id="ETL">
+            <h2>Proceso ETL:</h2>
+            <h4>Carga de Datos:</h4>
+            <p>- Se leyó el conjunto de datos de diamantes desde el archivo CSV.</p>
+            <h4>Preprocesamiento:</h4>
+            <p>- Se eliminaron las columnas 'cut', 'color' y 'clarity' para simplificar el conjunto de características.</p>
+            <h4>Modelo de K-Means:</h4>
+            <p>- Se aplicó el algoritmo de MiniBatchKMeans para realizar el clustering y se agregó la información de agrupación al conjunto de datos.</p>
+            <h4>Modelo de Mean-Shift:</h4>
+            <p>- Se utilizó el modelo MeanShift para encontrar los centroides y asignar cada diamante a uno de los grupos.</p>
+            <img src="../img/cluster/cluster_2.png" class="grafico">
+        </section>
+
+        <section id="Codigo">
+            <h2>Código Aplicado:</h2>
+            <h4>K-Means</h4>
+            <pre class="codigo">
+                <code>
+                    if __name__ == "__main__":
+                    dataset = pd.read_csv('./data/diamonds.csv')
+                    X = dataset.drop(['cut', 'color', 'clarity'], axis=1)
+                
+                    kmeans = MiniBatchKMeans(n_clusters=4, batch_size=8).fit(X)
+                    dataset['group'] = kmeans.predict(X)
+                    print(dataset)
+                </code>
+            </pre>
+            <h4>Mean-Shift</h4>
+            <pre class="codigo">
+                <code>
+                    from sklearn.cluster import MeanShift
+
+                    if __name__ == "__main__":
+                        dataset = pd.read_csv('./data/diamonds.csv')
+                        X = dataset.drop(['cut', 'color', 'clarity'], axis=1)
+
+                        meanshift = MeanShift().fit(X)
+                        dataset['meanshift'] = meanshift.labels_
+                        print(dataset)
+                </code>
+            </pre>
+        </section>
+
+        <section id="Conclusiones">
+            <h2>Conclusiones Finales del Proyecto:</h2>
+            <h4>K-Means:</h4>
+            <p>
+                - Se identificaron 4 grupos de diamantes basados en sus características.
+                - Esta información puede ser útil para clasificar diamantes según sus propiedades similares.
+            </p>
+            <h4>Mean-Shift:</h4>
+            <p>
+                - Se encontraron 2 grupos de diamantes utilizando el método de Mean-Shift.
+                - Esta agrupación puede ser relevante para identificar patrones de comportamiento de precios o características de los diamantes.
+            </p>
+            <p>En general, ambos métodos de clustering proporcionan información valiosa sobre la agrupación de diamantes en base a sus características. Estos resultados pueden ser utilizados para segmentar el mercado de diamantes y tomar decisiones estratégicas en la industria.</p>
+        </section>
+
+        <section id="Repositorio" class="Repositorio">
+            <h2>Repositorio</h2>
+            <p>Si deseas validar cómo se construyó el algoritmo y la base de datos, puedes visitar el siguiente enlace. Allí encontrarás todos los detalles del código y los datos utilizados en este proyecto.</p>
+            <img src="../media/GitHub.png"  width="100">
+            <a href="https://github.com/Lordjasonmartinez/clustering">👉 Haz clic aquí 👈</a>
+        </section>  
+    </main>
+</body>
+</html>
+
+

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KPCA</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdn.lineicons.com/2.0/LineIcons.css">
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="hamburguesa">&#9776;</div>
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="#Analisis">Análisis Detallado</a>
+            <a href="#Modelo">Modelo Utilizado</a>
+            <a href="#ETL">Proceso ETL</a>
+            <a href="#Conclusiones">Conclusiones Finales</a>
+            <a href="#Repositorio">Repositorio</a>
+        </nav>
+    </header>
+
+<script src="../script.js"></script>
+
+    <main>
+        <section id="Analisis">
+            <h2>Análisis Detallado y Simple del Proyecto</h2>
+            <h3>Regresión Robusta</h3>
+            <h4>Resultados del Error Cuadrático Medio (MSE):</h4>
+            <p>
+                - SVR: 79,526,525,859,607.89
+                - RANSAC: 412,226,720,808,828.6
+                - HUBER: 71,877,525,823,498.38
+            <img src="../img/regresion_robusta/robusta_1.png" class="grafico">
+        </section>
+
+        <section id="Modelo">
+            <h3>Regresión Robusta</h3>
+            <h2>Modelo Utilizado:</h2>
+            <p> - Se aplicaron tres modelos de regresión robusta: SVR (Support Vector Regression), RANSACRegressor y HuberRegressor.</p>
+            <h4>Librerías y Lenguaje de Programación:</h4>
+            <p>
+                - Lenguaje de Programación: Python.
+                - Librerías: pandas para manipulación de datos, scikit-learn para modelos de regresión y métricas, matplotlib y seaborn para visualización de datos, y numpy para operaciones numéricas.
+            </p>
+            <h4>Base de Datos:</h4>
+            <p>
+                - El análisis se basó en un conjunto de datos de ventas inmobiliarias en Nueva York (nyc-rolling-sales.csv).
+            </p>
+        </section>
+        
+        <section id="ETL">
+            <h2>Proceso ETL:</h2>
+            <h3>Regresión Robusta</h3>
+            <h4>Carga y Limpieza de Datos:</h4>
+            <p>- Se cargaron los datos desde el archivo CSV y se realizaron ajustes para manejar valores nulos y espacios en blanco.</p>
+            <h4>Preprocesamiento de Datos:</h4>
+            <p>
+                - Se eliminaron columnas no relevantes para la regresión.
+                - Se dividió el conjunto de datos en características (X) y la variable objetivo (Y).
+                - Se dividió el conjunto de datos en conjuntos de entrenamiento y prueba.
+            </p>
+            <h4>Modelos de Regresión Robusta:</h4>
+            <p>
+                - Se utilizaron tres modelos de regresión robusta (SVR, RANSAC, Huber) para predecir el precio de venta.
+                - Se imprimieron los resultados del MSE para cada modelo.
+            </p>
+            <img src="../img/regresion_robusta/robusta_2.png" class="grafico">
+        </section>
+
+        <section id="Conclusiones">
+            <h2>Conclusiones Finales del Proyecto:</h2>
+            <p>
+                - Los resultados del MSE indican la eficacia relativa de los modelos en términos de la precisión de las predicciones.
+                - SVR: MSE elevado puede indicar que el modelo no se ajusta bien a la variabilidad de los datos.
+                - RANSAC: MSE extremadamente alto sugiere que este modelo no es adecuado para el conjunto de datos o que necesita ajustes adicionales.
+                - HUBER: MSE más bajo podría indicar una mejor adaptación a la variabilidad de los datos en comparación con los otros modelos.
+            </p>
+            <p>En conclusión, la elección del modelo de regresión robusta debe basarse en el rendimiento relativo y la interpretación de los resultados. Además, se podría considerar ajustar los hiperparámetros de los modelos para mejorar su rendimiento.</p>
+            <img src="../img/regresion_robusta/robusta_3.png" class="grafico">
+        </section>
+
+        <section id="Repositorio" class="Repositorio">
+            <h2>Repositorio</h2>
+            <p>Si deseas validar cómo se construyó el algoritmo y la base de datos, puedes visitar el siguiente enlace. Allí encontrarás todos los detalles del código y los datos utilizados en este proyecto.</p>
+            <img src="../media/GitHub.png"  width="100">
+            <a href="https://github.com/Lordjasonmartinez/Regresion_robusta">👉 Haz clic aquí 👈</a>
+        </section>  
+    </main>
+</body>
+</html>
+
+

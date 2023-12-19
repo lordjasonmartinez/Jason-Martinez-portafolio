@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KPCA</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdn.lineicons.com/2.0/LineIcons.css">
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="hamburguesa">&#9776;</div>
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="#Analisis">Análisis Detallado</a>
+            <a href="#Modelo">Modelo Utilizado</a>
+            <a href="#ETL">Proceso ETL</a>
+            <a href="#Conclusiones">Conclusiones Finales</a>
+            <a href="#Repositorio">Repositorio</a>
+        </nav>
+    </header>
+
+<script src="../script.js"></script>
+
+    <main>
+        <section id="Analisis">
+            <h2>Análisis Detallado y Simple del Proyecto</h2>
+            <h3>Bagging con KNeighbors</h3>
+            <h4>KNeighbors:</h4>
+            <p>- La precisión del clasificador KNeighbors es del 70.4%.</p>
+            <h4>Bagging con KNeighbors:</h4>
+            <p>- La precisión del clasificador BaggingClassifier con KNeighbors como base es del 69.7%.</p>
+            <h3>Boosting con GradientBoostingClassifier</h3>
+            <h4>GradientBoosting:</h4>
+            <p>- La precisión del clasificador GradientBoostingClassifier es del 72.1%.</p>
+            <img src="../img/estimadores/estimador_1.png" class="grafico">
+        </section>
+
+        <section id="Modelo">
+            <h2>Modelo Utilizado:</h2>
+            <h3>Bagging con KNeighbors</h3>
+            <h4>Bagging con KNeighbors</h4>
+            <p> - Bagging con KNeighbors como base.</p>
+            <h4>Librerías y Lenguaje de Programación:</h4>
+            <p>
+                - Lenguaje de Programación: Python.
+                - Librerías: pandas para manipulación de datos, sklearn para modelos de clasificación.
+            </p>
+            <h4>Base de Datos:</h4>
+            <p>
+                - El análisis se realizó en un conjunto de datos de comportamiento de consumidores de comercio electrónico (ECommerce_consumer_behaviour.csv).
+            </p>
+            <h3>Boosting con GradientBoostingClassifier</h3>
+            <h4>Modelo Utilizado:</h4>
+            <p>- GradientBoostingClassifier.</p>
+            <h4>Librerías y Lenguaje de Programación:</h4>
+            <p>
+                - Lenguaje de Programación: Python.
+                - Librerías: pandas para manipulación de datos, sklearn para modelos de clasificación.
+            </p>
+            <h4>Base de Datos:</h4>
+            <p>- El análisis también se llevó a cabo en el conjunto de datos de comportamiento de consumidores de comercio electrónico.</p>        
+        </section>
+        
+        <section id="ETL">
+            <h2>Proceso ETL:</h2>
+            <h3>Bagging con KNeighbors</h3>
+            <h4>Carga de Datos:</h4>
+            <p>- Se leyó el conjunto de datos de comportamiento de consumidores de comercio electrónico.</p>
+            <h4>Preprocesamiento:</h4>
+            <p>
+                - Se separaron las características (X) y la variable objetivo (y).
+                - Se dividió el conjunto de datos en entrenamiento y prueba.
+            </p>
+            <h4>Modelo KNeighbors:</h4>
+            <p>- Se entrenó y evaluó un clasificador KNeighbors.</p>
+            <h4>Modelo BaggingClassifier:</h4>
+            <p>
+                - Se creó un clasificador BaggingClassifier con KNeighbors como base.
+                - Se entrenó y evaluó el modelo BaggingClassifier.
+            </p>
+            <h3>Boosting con GradientBoostingClassifier</h3>
+            <h4>Carga de Datos:</h4>
+            <p>- Se leyó el conjunto de datos de comportamiento de consumidores de comercio electrónico.</p>
+            <h4>Preprocesamiento:</h4>
+            <p>
+                - Se separaron las características (X) y la variable objetivo (y).
+                - Se dividió el conjunto de datos en entrenamiento y prueba.
+            </p>
+            <h4>Modelo GradientBoostingClassifier:</h4>
+            <p>- Se entrenó y evaluó el clasificador GradientBoostingClassifier.</p>
+            <img src="../img/estimadores/estimador_2.png" class="grafico">
+        </section>
+
+        <section id="Conclusiones">
+            <h2>Conclusiones Finales del Proyecto:</h2>
+            <h4>Bagging con KNeighbors:</h4>
+            <p>
+                - Aunque Bagging no mejoró la precisión en comparación con KNeighbors, es útil para reducir la variabilidad y mejorar la generalización del modelo.
+                - El modelo puede beneficiarse de la afinación de hiperparámetros para mejorar aún más su rendimiento.
+            <h4>Boosting con GradientBoostingClassifier:</h4>
+            <p>
+                - Gradient Boosting demostró ser efectivo, superando la precisión de KNeighbors y Bagging.
+                - La capacidad de Gradient Boosting para corregir errores y mejorar la precisión hace que sea una opción valiosa para este conjunto de datos específico.
+            </p>
+            <p>En resumen, el análisis demuestra que diferentes enfoques de ensamblado tienen impactos variables en la precisión del modelo. La elección entre Bagging y Boosting dependerá de la naturaleza específica de los datos y los objetivos del análisis.</p>
+        </section>
+
+        <section id="Repositorio" class="Repositorio">
+            <h2>Repositorio</h2>
+            <p>Si deseas validar cómo se construyó el algoritmo y la base de datos, puedes visitar el siguiente enlace. Allí encontrarás todos los detalles del código y los datos utilizados en este proyecto.</p>
+            <img src="../media/GitHub.png"  width="100">
+            <a href="https://github.com/Lordjasonmartinez/estimadores">👉 Haz clic aquí 👈</a>
+        </section>  
+    </main>
+</body>
+</html>
+
+
