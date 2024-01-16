@@ -12,7 +12,7 @@ body {
 /*Menu de navegación*/
 
 header {
-  background-color: #333;
+  background-color: #000;
   color: #fff;
   text-align: center;
   padding: 1em;
@@ -25,7 +25,7 @@ header {
 nav {
   display: flex;
   justify-content: center;
-  background-color: #333; /* Ajusta según el color de fondo de tu menú */
+  background-color: #000; /* Ajusta según el color de fondo de tu menú */
 }
 
 nav a {
@@ -40,7 +40,7 @@ nav a {
 }
 
 nav a:hover {
-  background-color: #fff;
+  background-color: #0468BF;
   color: #333;
 }
 
@@ -85,7 +85,7 @@ img {
 }
 
 footer {
-  background-color: #333;
+  background-color: #000;
   color: #fff;
   text-align: center;
   padding: 1em;
@@ -136,7 +136,6 @@ footer {
 /*Habilidades*/
 
 .habilidades {
-  margin: 30px 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: center; /* Centra horizontalmente */
@@ -159,7 +158,6 @@ footer {
 .proyectos li {
   width: 250px; /* Ancho fijo para todas las cajas, ajusta según tus necesidades */
   border: 1px solid #ddd;
-  margin-right: 10px; /* Ajusta el espacio entre proyectos según tus necesidades */
   padding: 10px;
   display: flex;
   flex-direction: column; /* Dispone los elementos en columna dentro de la caja */
@@ -234,20 +232,26 @@ footer {
   text-align: center;
 }
 
-
-.certificaciones img {
-  width:10%;
-  max-width: 400px;
-  border-radius: 10px;
-  margin: 10px 0;
+.certificaciones .div-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
+.certificaciones .div-container div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 300px; /* Ajusta este valor según tus necesidades */
+}
+
+.certificaciones img,
 .certificaciones a img {
-  width: 80%;
+  width: 90%;
   max-width: 400px;
   border-radius: 10px;
   margin: 10px 0;
-  display: inline-block;
 }
 
 .certificaciones a {
@@ -262,6 +266,7 @@ footer {
 .certificaciones a:hover {
   color: #fff;
 }
+
 
 /*Contacto*/
 
@@ -288,11 +293,11 @@ footer {
 }
 
 .contacto a:hover {
-  color: #FFCE30;  /* Cambiar el color del enlace al pasar el cursor */
+  color: #0087CC;  /* Cambiar el color del enlace al pasar el cursor */
 }
 
 .contacto i {
-  color: #FFCE30;  /* Color del icono */
+  color: #0087CC;  /* Color del icono */
   font-size: 24px;  /* Tamaño del icono */
 }
 
@@ -303,21 +308,19 @@ footer {
 #projects,
 #certifications,
 #contact {
-  background-color: #f8f8f8; /* Fondo blanco crema */
+  background-color: rgba(243, 239, 237, 0.94); /* Fondo blanco crema con 50% de transparencia */
 }
 
 #home,
 #skills,
 #analysis,
 #testimonials {
-  background-color: #ffffff; /* Fondo blanco crema */
+  background-color: rgba(300, 300, 300, 0.95); /* Fondo blanco con 50% de transparencia */
 }
 
 /* Testimonio */
 
 #testimonials {
-  background-color: #f9f9f9;
-  padding: 20px;
   text-align: center; /* Añade esta línea para centrar el texto */
 }
 
