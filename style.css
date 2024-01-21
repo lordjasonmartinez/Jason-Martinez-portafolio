@@ -157,7 +157,7 @@ footer {
 
 .proyectos li {
   width: 250px; /* Ancho fijo para todas las cajas, ajusta según tus necesidades */
-  border: 1px solid #ddd;
+  border: 1px solid #000;
   padding: 10px;
   display: flex;
   flex-direction: column; /* Dispone los elementos en columna dentro de la caja */
@@ -174,7 +174,7 @@ footer {
   height: auto; /* Se ajusta automáticamente la altura para mantener la proporción */
 }
 
-/*Scroll de los prouectos*/
+/*Scroll de los proyectos*/
 
 .container {
   position: relative;
@@ -182,7 +182,7 @@ footer {
 
 .container .slider {
   display: flex;
-  background: #f8f8f8;
+  background: #000;
   padding: 2px;
   width: 600 px;
   height: 150 px;
