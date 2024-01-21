@@ -531,9 +531,12 @@ footer {
   }
 
   .bot img {
-      width: 100%;
-      margin-right: 0;
-  }
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+
 
   .texto_bot {
       width: 100%;
