@@ -504,7 +504,7 @@ footer {
     display: block; /* Hacer que los enlaces ocupen todo el ancho del contenedor */
     text-align: center; /* Centrar el texto */
     padding: 10px; /* Añadir espacio alrededor del texto */
-    color: #000; /* Color del texto */
+    color: #fff; /* Color del texto */
     text-decoration: none; /* Eliminar subrayado del enlace */
     overflow: hidden; /* Ocultar cualquier contenido que se desborde */
     text-overflow: ellipsis; /* Mostrar puntos suspensivos (...) si el texto es demasiado largo */
