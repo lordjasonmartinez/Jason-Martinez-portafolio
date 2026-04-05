@@ -1,46 +1,100 @@
-// Menú en forma de hamburguesa
+/**
+ * PORTAFOLIO JASON MARTÍNEZ - 2026
+ * Funcionalidades: Scroll suave, Animaciones de entrada y Filtro de proyectos
+ */
 
-// Agrega un evento de clic a la hamburguesa para alternar la clase active en el menú
-document.querySelector('.hamburguesa').addEventListener('click', function () {
-  document.querySelector('nav').classList.toggle('active');
-});
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // 1. SCROLL SUAVE PARA LOS ENLACES DEL MENÚ
+    const menuLinks = document.querySelectorAll('.nav-links a');
 
-// Agrega un evento de clic a todos los enlaces dentro del menú
-document.querySelectorAll('nav a').forEach(function (enlace) {
-  enlace.addEventListener('click', function () {
-    // Oculta el menú al hacer clic en un enlace
-    document.querySelector('nav').classList.remove('active');
-  });
-});
+    menuLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const targetId = link.getAttribute('href');
+            
+            if (targetId.startsWith('#')) {
+                e.preventDefault();
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    window.scrollTo({
+                        top: targetSection.offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        });
+    });
 
-// Scroll de proyectos
+    // 2. ANIMACIÓN DE REVELADO (Intersection Observer)
+    const observerOptions = {
+        threshold: 0.15,
+        rootMargin: "0px 0px -50px 0px"
+    };
 
-document.addEventListener('DOMContentLoaded', function () {
-  const prev = document.querySelector(".prev");
-  const next = document.querySelector(".next");
-  const slider = document.querySelector(".slider");
-  const items = slider.querySelectorAll('li');
-  let currentItem = 0;
+    const revealOnScroll = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
 
-  function showItem(index) {
-      items.forEach((item, i) => {
-          if (window.innerWidth <= 768) {
-              item.style.display = i === index ? 'block' : 'none';
-          } else {
-              item.style.display = (i >= index && i < index + 3) ? 'block' : 'none';
-          }
-      });
-  }
+    const elementsToReveal = document.querySelectorAll('section, .project-card, .profile-frame');
+    
+    elementsToReveal.forEach(el => {
+        el.classList.add('reveal-hidden');
+        revealOnScroll.observe(el);
+    });
 
-  prev.addEventListener('click', () => {
-      currentItem = (currentItem > 0) ? currentItem - 1 : items.length - 1;
-      showItem(currentItem);
-  });
+    // 3. INDICADOR DE SECCIÓN ACTIVA
+    window.addEventListener('scroll', () => {
+        let current = "";
+        const sections = document.querySelectorAll('section');
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            if (pageYOffset >= (sectionTop - 200)) {
+                current = section.getAttribute('id');
+            }
+        });
 
-  next.addEventListener('click', () => {
-      currentItem = (currentItem < items.length - 1) ? currentItem + 1 : 0;
-      showItem(currentItem);
-  });
+        menuLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
+    });
 
-  showItem(currentItem);
+    // 4. LÓGICA DE FILTRADO DE PORTAFOLIO (NUEVO)
+    // Definimos la función dentro del scope para que los botones la encuentren
+    window.filterProjects = function(category) {
+        const cards = document.querySelectorAll('.project-card');
+        const buttons = document.querySelectorAll('.filter-btn');
+
+        // Manejo de botones activos
+        buttons.forEach(btn => {
+            btn.classList.remove('active');
+            // Verificamos si el botón coincide con la categoría o si es "Todos"
+            if (btn.getAttribute('onclick').includes(category)) {
+                btn.classList.add('active');
+            }
+        });
+
+        // Filtrar tarjetas con animación sutil
+        cards.forEach(card => {
+            card.style.opacity = "0"; // Efecto de desvanecido al filtrar
+            
+            setTimeout(() => {
+                if (category === 'all' || card.classList.contains(category)) {
+                    card.style.display = 'block';
+                    setTimeout(() => { card.style.opacity = "1"; }, 50);
+                } else {
+                    card.style.display = 'none';
+                }
+            }, 300);
+        });
+    };
 });
