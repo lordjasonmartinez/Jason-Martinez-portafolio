@@ -16,34 +16,37 @@
     <header class="main-header">
         <div class="brand">JASON MARTÍNEZ</div>
         
-        <nav>
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <nav class="nav-container">
             <div class="nav-links">
                 <a href="#home" class="nav-item" data-tooltip="Inicio">
-                    <i class="lni lni-home"></i>
+                    <i class="lni lni-home"></i> <span>Inicio</span>
                 </a>
-
                 <a href="#sobre-mi" class="nav-item" data-tooltip="Sobre mí">
-                    <i class="lni lni-user"></i>
+                    <i class="lni lni-user"></i> <span>Sobre mí</span>
                 </a>
-
                 <a href="#proyectos" class="nav-item" data-tooltip="Proyectos">
-                    <i class="lni lni-grid-alt"></i>
+                    <i class="lni lni-grid-alt"></i> <span>Proyectos</span>
+                </a>
+                <a href="#contacto" class="nav-item" data-tooltip="Contacto">
+                    <i class="lni lni-envelope"></i> <span>Contacto</span>
                 </a>
 
-                <a href="#contacto" class="nav-item" data-tooltip="Contacto">
-                    <i class="lni lni-envelope"></i>
-                </a>
+                <div class="social-mobile">
+                    <a href="https://linkedin.com/in/..." target="_blank" class="nav-item" data-tooltip="LinkedIn">
+                        <i class="lni lni-linkedin-original"></i> <span>Linkedin</span>
+                    </a>
+                    <a href="https://github.com/..." target="_blank" class="nav-item" data-tooltip="GitHub">
+                        <i class="lni lni-github-original"></i> <span>GitHub</span>
+                    </a>
+                </div>
             </div>
         </nav>
-
-        <div class="social-icons-vertical">
-            <a href="https://linkedin.com/in/jasondanielmartinezcastro/" target="_blank" class="nav-item" data-tooltip="LinkedIn">
-                <i class="lni lni-linkedin-original"></i>
-            </a>
-            <a href="https://github.com/Lordjasonmartinez" target="_blank" class="nav-item" data-tooltip="GitHub">
-                <i class="lni lni-github-original"></i>
-            </a>
-        </div>
     </header>
 
     <main class="main-content">
@@ -67,7 +70,7 @@
                     <img src="media/Perfil_2026.png" alt="Jason Martinez" class="profile-image">
                 </div>
                 <div class="about-text">
-                    <p class="large-text">He pasado de analista de datos a líder estratégico en gestión de proveedores en empresas como Cruz Verde e IQVIA.</p>
+                    <p class="large-text">Líder Estratégico en Data Insights & Gestión de Operaciones.</p>
                     
                     <div class="about-description">
                         <p>Ingeniero Industrial con más de <strong>9 años de experiencia</strong>, especializado en Consultoría Estratégica e Insights de Datos. Responsable de la gestión y asesoría de las cuentas más grandes del sector farmacéutico en Colombia, transformando datos complejos en hojas de ruta estratégicas para la alta gerencia (C-Level).</p>
@@ -80,7 +83,7 @@
                         <div class="skill-item"><img src="media/PowerBI.png" alt="Power BI"> <span>Power BI</span></div>
                         <div class="skill-item"><img src="media/Ubuntu.png" alt="Linux"> <span>Linux</span></div>
                         <div class="skill-item"><img src="media/Scikit.png" alt="Machine Learning"> <span>Machine Learning</span></div>
-                        <div class="skill-item"><img src="media/d3.png" alt="ETL"> <span>ETL</span></div>
+                        <div class="skill-item"><img src="media/Office.png" alt="ETL"> <span>ETL</span></div>
                     </div>
 
                     <div class="platzi-certificates">
@@ -123,107 +126,104 @@ class="project-card bi" es para "Business Intelligence".
 class="project-card etl" es para "Automatización".
 -->
 
-                <article class="project-card ds">
-                    <a href="Projects/KPCA.html">
-                        <div class="img-wrapper">
-                            <img src="./img/Miniaturas/KPCA.jpg" alt="Modelo KPCA">
-                            <div class="project-info-overlay">
-                                <div class="hexagon">
-                                    <span class="category">Data Science / ML</span>
-                                    <h3>Modelo KPCA</h3>
-                                </div>
-                            </div>
+            <article class="project-card ds" onclick="openProject('content-kpca')" style="cursor: pointer;">
+                <div class="img-wrapper">
+                    <img src="./img/Miniaturas/KPCA.jpg" alt="Modelo KPCA">
+                    <div class="project-info-overlay">
+                        <div class="hexagon">
+                            <span class="category">Data Science / ML</span>
+                            <h3>Modelo KPCA</h3>
                         </div>
-                    </a>
-                </article>
+                    </div>
+                </div>
+            </article>
 
-                <article class="project-card ds">
-                    <a href="Projects/Cluster.html">
-                        <div class="img-wrapper">
-                            <img src="./img/Miniaturas/Cluster.jpg" alt="Segmentación K-Means">
-                            <div class="project-info-overlay">
-                                <div class="hexagon">
-                                    <span class="category">Machine Learning</span>
-                                    <h3>K-Means Cluster</h3>
-                                </div>
-                            </div>
+            <article class="project-card ds" onclick="openProject('content-cluster')" style="cursor: pointer;">
+                <div class="img-wrapper">
+                    <img src="./img/Miniaturas/Cluster.jpg" alt="Segmentación K-Means">
+                    <div class="project-info-overlay">
+                        <div class="hexagon">
+                            <span class="category">Machine Learning</span>
+                            <h3>K-Means Cluster</h3>
                         </div>
-                    </a>
-                </article>
+                    </div>
+                </div>
+            </article>
 
-                <article class="project-card ds">
-                    <a href="Projects/Estimadores.html">
-                        <div class="img-wrapper">
-                            <img src="./img/Miniaturas/Estimadores.jpg" alt="Modelo KNeighbors">
-                            <div class="project-info-overlay">
-                                <div class="hexagon">
-                                    <span class="category">Data Science</span>
-                                    <h3>Modelo KNeighbors</h3>
-                                </div>
-                            </div>
+            <article class="project-card ds" onclick="openProject('content-estimadores')" style="cursor: pointer;">
+                <div class="img-wrapper">
+                    <img src="./img/Miniaturas/Estimadores.jpg" alt="Modelo KNeighbors">
+                    <div class="project-info-overlay">
+                        <div class="hexagon">
+                            <span class="category">Data Science</span>
+                            <h3>Modelo KNeighbors</h3>
                         </div>
-                    </a>
-                </article>
+                    </div>
+                </div>
+            </article>
 
-                <article class="project-card ds">
-                    <a href="Projects/Optimizacion_parametrica.html">
-                        <div class="img-wrapper">
-                            <img src="./img/Miniaturas/Optimización parametrica.jpg" alt="Optimizacion Parametrica">
-                            <div class="project-info-overlay">
-                                <div class="hexagon">
-                                    <span class="category">Machine Learning</span>
-                                    <h3>Optimización Paramétrica</h3>
-                                </div>
-                            </div>
+            <article class="project-card ds" onclick="openProject('content-optimizacion')" style="cursor: pointer;">
+                <div class="img-wrapper">
+                    <img src="./img/Miniaturas/Optimización parametrica.jpg" alt="Optimizacion Parametrica">
+                    <div class="project-info-overlay">
+                        <div class="hexagon">
+                            <span class="category">Machine Learning</span>
+                            <h3>Optimización Paramétrica</h3>
                         </div>
-                    </a>
-                </article>
+                    </div>
+                </div>
+            </article>
 
-                <article class="project-card ds">
-                    <a href="Projects/PCA-IPCA.html">
-                        <div class="img-wrapper">
-                            <img src="./img/Miniaturas/PCA-IPCA.jpg" alt="Modelo PCA-IPCA">
-                            <div class="project-info-overlay">
-                                <div class="hexagon">
-                                    <span class="category">Data Science</span>
-                                    <h3>Modelo PCA-IPCA</h3>
-                                </div>
-                            </div>
+            <article class="project-card ds" onclick="openProject('content-pca')" style="cursor: pointer;">
+                <div class="img-wrapper">
+                    <img src="./img/Miniaturas/PCA-IPCA.jpg" alt="Modelo PCA-IPCA">
+                    <div class="project-info-overlay">
+                        <div class="hexagon">
+                            <span class="category">Data Science</span>
+                            <h3>Modelo PCA-IPCA</h3>
                         </div>
-                    </a>
-                </article>
+                    </div>
+                </div>
+            </article>
 
-                <article class="project-card ds">
-                    <a href="Projects/Regresion_robusta.html">
-                        <div class="img-wrapper">
-                            <img src="./img/Miniaturas/Regresión robusta.jpg" alt="Regresion Robusta">
-                            <div class="project-info-overlay">
-                                <div class="hexagon">
-                                    <span class="category">Data Science / Estadística</span>
-                                    <h3>Regresión Robusta</h3>
-                                </div>
-                            </div>
+            <article class="project-card ds" onclick="openProject('content-robusta')" style="cursor: pointer;">
+                <div class="img-wrapper">
+                    <img src="./img/Miniaturas/Regresión robusta.jpg" alt="Regresion Robusta">
+                    <div class="project-info-overlay">
+                        <div class="hexagon">
+                            <span class="category">Data Science / Estadística</span>
+                            <h3>Regresión Robusta</h3>
                         </div>
-                    </a>
-                </article>
+                    </div>
+                </div>
+            </article>
 
-                <article class="project-card ds">
-                    <a href="Projects/Regresión_lineal.html">
-                        <div class="img-wrapper">
-                            <img src="./img/Miniaturas/Regresión Lineal.jpg" alt="Regresión Lineal">
-                            <div class="project-info-overlay">
-                                <div class="hexagon">
-                                    <span class="category">Data Science</span>
-                                    <h3>Regresión Lineal</h3>
-                                </div>
-                            </div>
+            <article class="project-card ds" onclick="openProject('content-lineal')" style="cursor: pointer;">
+                <div class="img-wrapper">
+                    <img src="./img/Miniaturas/Regresión Lineal.jpg" alt="Regresión Lineal">
+                    <div class="project-info-overlay">
+                        <div class="hexagon">
+                            <span class="category">Data Science</span>
+                            <h3>Regresión Lineal</h3>
                         </div>
-                    </a>
-                </article>
+                    </div>
+                </div>
+            </article>
 
                 </div>
             </div>
         </section>
+
+        <section id="portafolio">
+    <div class="portfolio-container">
+        <div class="project-grid">
+            <article class="project-card ds" onclick="openProject('content-kpca')"> ... </article>
+            </div>
+    </div>
+</section>
+
+
+<!--Sección de Contactos-->
 
         <section id="contacto" class="contact-section">
             <div class="contact-fade-top"></div>
@@ -267,5 +267,14 @@ class="project-card etl" es para "Automatización".
     </main>
 
     <script src="script.js"></script>
+
+    <div id="project-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div id="modal-body">
+            </div>
+    </div>
+
+</div>
 </body>
 </html>

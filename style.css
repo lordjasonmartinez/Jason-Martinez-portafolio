@@ -15,22 +15,33 @@ body {
     overflow-x: hidden;
 }
 
-/* --- NAVEGACIÓN LATERAL --- */
-/* --- NAVEGACIÓN LATERAL (HEADER) --- */
+/* --- BARRA LATERAL (ESCRITORIO) --- */
 .main-header {
     position: fixed;
     left: 0;
     top: 0;
     height: 100vh;
-    width: 70px; /* Un poco más delgada para que sea elegante */
+    width: 70px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     padding: 40px 0;
-    background: #000; /* FONDO NEGRO */
+    background: #000;
     z-index: 2000;
-    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+}
+
+/* Ocultar hamburguesa en escritorio */
+.menu-toggle {
+    display: none;
+}
+
+/* Navegación vertical en escritorio */
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    background: transparent;
 }
 
 /* Estilo base de los enlaces/iconos */
@@ -46,6 +57,44 @@ body {
     text-decoration: none;
     font-size: 1.5rem;
     transition: all 0.3s ease;
+}
+
+/* Color blanco para todos los iconos, siempre */
+.nav-item i {
+    color: #ffffff !important; 
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+/* Evitar el morado de enlaces visitados */
+.nav-item:visited, .nav-item:active, .nav-item:link {
+    color: #ffffff !important;
+    text-decoration: none;
+}
+
+/* Ocultar el texto por defecto en escritorio */
+.nav-item span {
+    display: none;
+}
+
+/* Mostrar Tooltip al pasar el cursor (Escritorio) */
+.nav-item::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: 80px;
+    background: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s;
+}
+
+.nav-item:hover::after {
+    opacity: 1;
 }
 
 .nav-item:hover {
@@ -329,15 +378,6 @@ body {
     margin-bottom: 40px;
 }
 
-/* RESPONSIVE */
-@media (max-width: 900px) {
-    .main-header { width: 100%; height: 60px; flex-direction: row; padding: 0 20px; border-bottom: 1px solid #eee; }
-    .brand { transform: rotate(0); writing-mode: horizontal-tb; }
-    .nav-links { flex-direction: row; gap: 20px; }
-    .main-content { margin-left: 0; padding-top: 80px; }
-    .about-grid, .project-grid { grid-template-columns: 1fr; }
-}
-
 
 /* --- ESTILO HEXÁGONO CENTRAL Y ANIMACIÓN 3D --- */
 
@@ -601,6 +641,14 @@ body {
     margin: 0 auto;
 }
 
+.portfolio-filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px; /* Espacio generoso */
+    margin: 40px 0;
+}
+
 /* Estilo de las tarjetas para que sean cuadradas */
 .project-card .img-wrapper {
     position: relative;
@@ -623,22 +671,35 @@ body {
     box-shadow: 15px 20px 35px rgba(0,0,0,0.15);
 }
 
-/* Botones Portafolio */
-.portfolio-filters {
+/* --- FILTROS DE PROYECTOS RESPONSIVOS --- */
+.portfolio-filters::-webkit-scrollbar {
     display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 40px;
+    justify-content: center; /* Centrados por defecto */
+    flex-wrap: wrap; /* Para que bajen en lugar de amontonarse en PC */
+    gap: 15px; /* Espacio entre botones */
+    margin: 40px auto;
+    padding: 0 20px;
+    max-width: 1200px;
+    
+    /* MAGIA DEL SCROLL HORIZONTAL */
+    overflow-x: auto; /* Permite scroll solo horizontalmente */
+    white-space: nowrap; /* Evita que los botones bajen de línea */
+    padding: 10px 5% 20px 5%; /* Añade padding a los lados para que respire */
+    
+    /* Ocultar barra de scroll en móviles (Opcional, se ve más limpio) */
+    -webkit-overflow-scrolling: touch; /* Scroll suave en iOS */
 }
 
 .filter-btn {
+    padding: 12px 25px; /* Más espacio interno para que respiren */    
+    flex-shrink: 0; /* Evita que los botones se encojan para caber */
     background: transparent;
-    border: 1px solid #eee;
-    padding: 10px 25px;
-    border-radius: 50px;
+    border: 1px solid #e0e0e0;
+    padding: 10px 20px;
+    border-radius: 30px; /* Bordes más redondeados para look moderno */
     cursor: pointer;
     font-size: 0.85rem;
-    font-weight: 600;
+    font-weight: 500;
     transition: all 0.3s ease;
     color: #666;
 }
@@ -838,13 +899,388 @@ body {
     display: inline-block;
 }
 
-/* Ajuste móvil */
+/* En móviles, si son muchos, activamos el scroll horizontal */
 @media (max-width: 768px) {
+    .portfolio-filters {
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 15px; /* Espacio para que no choque con el scroll */
+    }
+    
+    .filter-btn {
+        flex-shrink: 0; /* Que no se achiquen */
+    }
+}
+
+
+/* --- ESTILOS DEL MODAL --- */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 3000; /* Por encima de todo */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Fondo muy oscuro */
+    backdrop-filter: blur(8px);
+    overflow-y: auto; /* Permite scroll si el proyecto es largo */
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 50px auto;
+    padding: 60px;
+    width: 80%;
+    max-width: 1000px;
+    border-radius: 20px;
+    position: relative;
+    color: #333;
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    font-weight: bold;
+    color: #000;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close-modal:hover {
+    transform: scale(1.2);
+}
+
+/* Estilos para el contenido dentro del modal (basado en tu código de proyecto) */
+#modal-body h2 { font-size: 2.5rem; margin-bottom: 20px; color: #000; }
+#modal-body h4 { font-size: 1.2rem; color: #666; margin-top: 30px; }
+#modal-body p { line-height: 1.8; margin-bottom: 20px; }
+#modal-body .grafico { width: 100%; border-radius: 10px; margin: 20px 0; }
+#modal-body .codigo { 
+    background: #f4f4f4; 
+    padding: 20px; 
+    border-radius: 10px; 
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+}
+
+#modal-body h2 { color: #333; margin-bottom: 20px; }
+#modal-body p { line-height: 1.6; color: #666; }
+#modal-body img { max-width: 100%; height: auto; border-radius: 8px; margin: 20px 0; }
+
+
+
+/* ============================================================
+   OPTIMIZACIÓN PARA MÓVILES (RESPONSIVE)
+   ============================================================ */
+
+@media (max-width: 768px) {
+    /* 1. Navegación: De lateral a superior */
+    .main-header {
+        width: 100%;
+        height: 60px;
+        flex-direction: row;
+        padding: 0 20px;
+        bottom: auto;
+        top: 0;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    .brand {
+        writing-mode: horizontal-tb;
+        transform: rotate(0);
+        font-size: 0.7rem;
+    }
+
+    .nav-links {
+        flex-direction: row;
+        gap: 15px;
+    }
+
+    .nav-item {
+        margin-bottom: 0;
+        font-size: 1.2rem;
+    }
+
+    /* 2. Ajuste de márgenes globales */
+    .main-content {
+        margin-left: 0; /* Quitamos el espacio de la barra lateral */
+        padding: 80px 5% 40px 5%; /* Espacio arriba para que no lo tape la nav */
+    }
+
+    /* 3. Hero Section */
+    .hero-section {
+        height: 80vh;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .hero-content {
+        padding-left: 0;
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    /* 4. Perfil / About Grid */
+    .about-grid {
+        grid-template-columns: 1fr; /* Una sola columna */
+        gap: 40px;
+    }
+
+    .profile-column {
+        order: -1; /* La foto sale primero */
+    }
+
+    .profile-frame {
+        width: 80%; /* Un poco más pequeña en móvil para que no sea infinita */
+        margin: 0 auto;
+    }
+
+    .about-text .large-text {
+        font-size: 1.8rem;
+        text-align: center;
+    }
+
+    /* 5. Certificados Platzi */
+    .certificate-item {
+        width: 100%; /* Uno por fila en móviles pequeños */
+        max-width: 300px;
+    }
+
+    /* 6. Modal (Vital para que se pueda leer) */
+    .modal-content {
+        width: 95%;
+        margin: 20px auto;
+        padding: 30px 20px;
+        border-radius: 15px;
+    }
+
+    #modal-body h2 {
+        font-size: 1.6rem;
+    }
+
+    /* 7. Contacto */
+    .contact-email-big {
+    font-size: clamp(1.5rem, 6.5vw, 4.8rem); /* Ajuste dinámico */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    display: block;
+    max-width: 100%;
+    letter-spacing: -2px; /* Ayuda a que quepa mejor en 1632px */
+    }
+
     .contact-footer-links {
         flex-direction: column;
         gap: 30px;
-    }
-    .contact-email-big {
-        font-size: 1.4rem; /* Evita que el correo se salga en móviles */
+        align-items: center;
     }
 }
+
+/* Ajuste para tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .about-grid {
+        grid-template-columns: 200px 1fr;
+        gap: 40px;
+    }
+    .portfolio-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}
+
+/* --- MENÚ HAMBURGUESA Y RESPONSIVE --- */
+@media (max-width: 900px) {
+
+
+    /* Espaciado para los filtros de proyectos en móvil */
+    .portfolio-filters {
+        margin-top: 40px !important; /* Los baja para que no peguen con el título */
+        justify-content: center !important;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 0 10px;
+    }
+
+    /* Botón de cerrar tipo "Floating Action Button" */
+    .close-modal {
+        position: fixed; /* Se queda fijo arriba a la derecha del viewport */
+        top: 15px;
+        right: 15px;
+        width: 45px;
+        height: 45px;
+        background-color: #000 !important; /* Fondo negro circular */
+        color: #fff !important; /* X blanca */
+        border-radius: 50%; /* Lo hace redondo */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        z-index: 4000; /* Siempre por encima del contenido del modal */
+        box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        cursor: pointer;
+        border: none;
+    }
+
+    /* Desactivar el tooltip de escritorio */
+    .nav-item::after {
+        display: none !important;
+    }
+
+    /* Mostrar el texto al lado del icono */
+    .nav-item {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        width: auto;
+        color: white !important;
+    }
+
+    /* Si pusiste el nombre dentro de un <span> en el HTML, lo mostramos */
+    .nav-item span {
+        display: inline-block;
+        font-size: 1.5rem;
+    }
+
+    .social-mobile {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Espacio entre LinkedIn y GitHub */
+    margin-top: 30px; /* Separación del bloque de links superior */
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Línea sutil divisoria */
+    width: 60%; /* Ancho de la línea divisoria */
+    }
+
+    .social-mobile a i {
+        font-size: 2rem; /* Iconos un poco más grandes y fáciles de tocar */
+        color: #fff;
+    }
+
+    .nav-links .nav-item {
+    color: #ffffff !important; /* Blanco para el texto */
+    font-size: 1.5rem;
+    font-weight: 400;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    }
+
+    .nav-links .nav-item i {
+    color: #ffffff !important; /* Blanco para los iconos (LinkedIn/GitHub/Home) */
+    font-size: 1.8rem;
+    }
+
+    .main-header {
+        width: 100%;
+        height: 70px;
+        flex-direction: row;
+        padding: 0 20px;
+        justify-content: space-between;
+    }
+
+    .brand {
+        writing-mode: horizontal-tb;
+        transform: rotate(0);
+        font-size: 0.8rem;
+    }
+
+    /* Ocultar links por defecto en móvil */
+    .nav-links {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 85%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        
+        display: flex;
+        flex-direction: column;
+        
+        /* CAMBIOS AQUÍ: Centrado total */
+        justify-content: center; 
+        align-items: center; 
+        
+        padding: 0; /* Quitamos el padding lateral para centrar real */
+        gap: 40px; /* Más espacio entre cada botón */
+        
+        transition: 0.4s ease;
+        z-index: 2500;
+    }
+
+    .nav-links.active {
+        left: 0;
+    }
+
+    /* Forzar color blanco en móvil */
+    .nav-links .nav-item, 
+    .nav-links .nav-item i {
+        color: #ffffff !important;
+        font-size: 1.4rem;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    /* Ajustar el contenido principal para que no se pegue arriba */
+    .main-content {
+        margin-left: 0 !important;
+        padding-top: 90px;
+    }
+
+    /* Estilo del Icono Hamburguesa */
+    .menu-toggle {
+        display: block; /* Aparece la hamburguesa */
+        z-index: 3000;
+    }
+
+    .menu-toggle .bar {
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        background: #fff;
+        display: block;
+        transition: 0.3s;
+    }
+
+    /* Animación a 'X' al abrir */
+    .menu-toggle.is-active .bar:nth-child(2) { opacity: 0; }
+    .menu-toggle.is-active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .menu-toggle.is-active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    .main-content {
+        margin-left: 0;
+        padding-top: 100px;
+    }
+}
+
+/* --- AJUSTE ESPECÍFICO PARA EL CORREO EN PANTALLAS MEDIANAS (1632px aprox) --- */
+@media (max-width: 1700px) {
+    .contact-email-big {
+        font-size: 4.5vw; /* Reducción ligera para evitar el desborde que viste */
+    }
+}
+
+/* --- SOLO PARA ESCRITORIO --- */
+@media (min-width: 901px) {
+    .main-content {
+        margin-left: 70px; /* Espacio para la barra lateral negra */
+    }
+    
+    .nav-links .nav-item i {
+        color: #fff; /* O el color que prefieras para los iconos laterales */
+    }
+}
+
+
