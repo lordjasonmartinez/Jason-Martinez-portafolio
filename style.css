@@ -762,7 +762,7 @@ body {
 
 /* EMAIL IMPACTANTE */
 .contact-email-big {
-    font-size: clamp(1.5rem, 6vw, 4.5rem);
+    font-size: clamp(1.2rem, 5vw, 3.5rem);
     font-weight: 800;
     color: #fff;
     text-decoration: none;
@@ -899,78 +899,99 @@ body {
     display: inline-block;
 }
 
-/* En móviles, si son muchos, activamos el scroll horizontal */
-@media (max-width: 768px) {
-    .portfolio-filters {
-        justify-content: flex-start;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        padding-bottom: 15px; /* Espacio para que no choque con el scroll */
-    }
-    
-    .filter-btn {
-        flex-shrink: 0; /* Que no se achiquen */
-    }
-}
+/* --- CONFIGURACIÓN PARA QUE SALGAN LOS PROYECTOS EN LA PANTALLA */
 
-
-/* --- ESTILOS DEL MODAL --- */
+/* --- CONFIGURACIÓN DEL MODAL (ESTILO FONDO BLANCO) --- */
 .modal {
-    display: none; /* Oculto por defecto */
+    display: none; 
     position: fixed;
-    z-index: 3000; /* Por encima de todo */
+    z-index: 9999 !important;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.9); /* Fondo muy oscuro */
-    backdrop-filter: blur(8px);
-    overflow-y: auto; /* Permite scroll si el proyecto es largo */
+    background-color: rgba(0,0,0,0.8); /* Oscurece el fondo de la página */
+    overflow-y: auto;
 }
 
 .modal-content {
-    background-color: #fff;
-    margin: 50px auto;
-    padding: 60px;
-    width: 80%;
-    max-width: 1000px;
-    border-radius: 20px;
+    background-color: #ffffff; /* Fondo Blanco */
+    margin: 5% auto;
+    padding: 50px 40px;
+    width: 90%;
+    max-width: 900px;
+    color: #333; /* Texto oscuro para legibilidad */
     position: relative;
-    color: #333;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
+/* BOTÓN CERRAR (X NEGRA CON FONDO BLANCO CIRCULAR) */
 .close-modal {
     position: absolute;
     top: 20px;
-    right: 30px;
-    font-size: 40px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: #ffffff; /* Fondo de la X */
+    color: #000000 !important; /* Color de la X */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
     font-weight: bold;
-    color: #000;
     cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
     transition: 0.3s;
+    z-index: 10001;
 }
 
 .close-modal:hover {
-    transform: scale(1.2);
+    background-color: #f0f0f0;
+    transform: scale(1.1);
 }
 
-/* Estilos para el contenido dentro del modal (basado en tu código de proyecto) */
-#modal-body h2 { font-size: 2.5rem; margin-bottom: 20px; color: #000; }
-#modal-body h4 { font-size: 1.2rem; color: #666; margin-top: 30px; }
-#modal-body p { line-height: 1.8; margin-bottom: 20px; }
-#modal-body .grafico { width: 100%; border-radius: 10px; margin: 20px 0; }
-#modal-body .codigo { 
-    background: #f4f4f4; 
-    padding: 20px; 
+/* ESTILOS DEL CONTENIDO INTERNO (Para que combine con el fondo blanco) */
+#modal-body h2 { 
+    font-size: 2.2rem; 
+    color: #000; 
+    margin-bottom: 20px;
+    font-weight: 800; 
+}
+
+#modal-body p { 
+    line-height: 1.8; 
+    color: #444; 
+    margin-bottom: 20px; 
+    font-size: 1.1rem;
+}
+
+#modal-body h4 { 
+    color: #000; 
+    margin-top: 30px; 
+    border-left: 4px solid #000;
+    padding-left: 15px;
+}
+
+#modal-body img { 
+    width: 100%; 
+    height: auto; 
     border-radius: 10px; 
+    margin: 25px 0; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Estilo para bloques de código dentro del modal */
+#modal-body pre, #modal-body .codigo {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #eee;
     overflow-x: auto;
     font-family: 'Courier New', monospace;
+    color: #333;
 }
-
-#modal-body h2 { color: #333; margin-bottom: 20px; }
-#modal-body p { line-height: 1.6; color: #666; }
-#modal-body img { max-width: 100%; height: auto; border-radius: 8px; margin: 20px 0; }
 
 
 
@@ -978,134 +999,136 @@ body {
    OPTIMIZACIÓN PARA MÓVILES (RESPONSIVE)
    ============================================================ */
 
-@media (max-width: 768px) {
-    /* 1. Navegación: De lateral a superior */
-    .main-header {
-        width: 100%;
-        height: 60px;
-        flex-direction: row;
-        padding: 0 20px;
-        bottom: auto;
-        top: 0;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-    }
+/* --- MENÚ HAMBURGUESA Y RESPONSIVE --- */
+@media (min-width: 1px) and (max-width: 900px) {
 
-    .brand {
-        writing-mode: horizontal-tb;
-        transform: rotate(0);
-        font-size: 0.7rem;
-    }
 
-    .nav-links {
-        flex-direction: row;
-        gap: 15px;
-    }
-
-    .nav-item {
-        margin-bottom: 0;
-        font-size: 1.2rem;
-    }
-
-    /* 2. Ajuste de márgenes globales */
+    /* --- SOLO PARA ESCRITORIO --- */
     .main-content {
-        margin-left: 0; /* Quitamos el espacio de la barra lateral */
-        padding: 80px 5% 40px 5%; /* Espacio arriba para que no lo tape la nav */
+        margin-left: 70px; /* Espacio para la barra lateral negra */
+    }
+    
+    .nav-links .nav-item i {
+        color: #fff; /* O el color que prefieras para los iconos laterales */
     }
 
-    /* 3. Hero Section */
-    .hero-section {
-        height: 80vh;
-        justify-content: center;
-        text-align: center;
+    /* --- SECCIÓN DE CONTACTO --- */
+    /* Ajuste para tablets */
+   .about-grid {
+        display: flex !important;
+        flex-direction: column !important; /* Foto arriba, texto abajo */
+        align-items: center !important;    /* Centra los elementos */
+        gap: 40px !important;              /* Espacio entre foto y texto */
     }
 
-    .hero-content {
-        padding-left: 0;
-        align-items: center;
-        text-align: center;
-    }
-
-    .hero-content h1 {
-        font-size: 2.5rem;
-    }
-
-    /* 4. Perfil / About Grid */
-    .about-grid {
-        grid-template-columns: 1fr; /* Una sola columna */
-        gap: 40px;
-    }
-
-    .profile-column {
-        order: -1; /* La foto sale primero */
-    }
-
+    /* 2. Ajustamos el contenedor de la foto para que no sea gigante */
     .profile-frame {
-        width: 80%; /* Un poco más pequeña en móvil para que no sea infinita */
-        margin: 0 auto;
+        width: 100% !important;
+        max-width: 320px !important; /* Tamaño ideal para móvil */
+        margin: 0 auto !important;
     }
 
-    .about-text .large-text {
-        font-size: 1.8rem;
-        text-align: center;
+    /* 3. Centramos los textos para mejorar la estética en móvil */
+    .about-text {
+        text-align: center !important;
+        width: 100% !important;
     }
 
-    /* 5. Certificados Platzi */
-    .certificate-item {
-        width: 100%; /* Uno por fila en móviles pequeños */
-        max-width: 300px;
+    /* 4. Mantenemos la descripción alineada a la izquierda para lectura cómoda */
+    .about-description {
+        text-align: left !important;
+        margin-top: 20px !important;
     }
 
-    /* 6. Modal (Vital para que se pueda leer) */
-    .modal-content {
-        width: 95%;
-        margin: 20px auto;
-        padding: 30px 20px;
-        border-radius: 15px;
+    /* 5. Centramos las habilidades y certificados */
+    .skills-minimal, 
+    .certificates-grid {
+        justify-content: center !important;
     }
 
-    #modal-body h2 {
-        font-size: 1.6rem;
-    }
-
-    /* 7. Contacto */
-    .contact-email-big {
-    font-size: clamp(1.5rem, 6.5vw, 4.8rem); /* Ajuste dinámico */
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    display: block;
-    max-width: 100%;
-    letter-spacing: -2px; /* Ayuda a que quepa mejor en 1632px */
-    }
-
-    .contact-footer-links {
-        flex-direction: column;
-        gap: 30px;
-        align-items: center;
-    }
-}
-
-/* Ajuste para tablets */
-@media (min-width: 769px) and (max-width: 1024px) {
-    .about-grid {
-        grid-template-columns: 200px 1fr;
-        gap: 40px;
-    }
+    /* --- SECCIÓN DE PORTAFOLIO --- */
     .portfolio-grid {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }
-}
-
-/* --- MENÚ HAMBURGUESA Y RESPONSIVE --- */
-@media (max-width: 900px) {
-
-
-    /* Espaciado para los filtros de proyectos en móvil */
-    .portfolio-filters {
-        margin-top: 40px !important; /* Los baja para que no peguen con el título */
+    
+    /* 1. SECCIÓN CONTACTO (Prioridad Alta) */
+    #contacto {
+        min-height: 80vh !important; 
+        display: flex !important;
+        flex-direction: column !important;
         justify-content: center !important;
+        align-items: center !important;
+        text-align: center;
+        padding: 40px 20px !important;
+        background-color: #000;
+    }
+
+    /* --- ESTO ES LO QUE PONE LOS BOTONES EN VERTICAL EN MÓVIL --- */
+    .contact-footer-links {
+        display: flex !important;
+        flex-direction: column !important; /* LinkedIn arriba, GitHub abajo */
+        align-items: center !important;
+        gap: 20px !important; /* Espacio entre los dos bloques */
+        width: 100% !important;
+    }
+
+    .social-box-link {
+        display: flex !important;
+        flex-direction: row !important; /* El icono y el texto siguen juntos en su fila */
+        align-items: center !important;
+        justify-content: flex-start !important;
+        width: 280px !important; /* Ancho fijo para que se vean parejos y centrados */
+        padding: 15px !important;
+    }
+
+    /* Bajamos un poco el título para que respire respecto al degradado superior */
+    #contacto h2 {
+        margin-top: 20px !important;
+        font-size: 1.1rem !important;
+        color: rgba(255,255,255,0.8); /* Un gris claro para el subtítulo */
+    }
+
+    /* 3. CORREO: Ajuste dinámico para que NUNCA se salga de la pantalla */
+    .contact-email-big {
+        /* Ajustamos el tamaño para que no sea tan invasivo pero destaque */
+        font-size: clamp(1.5rem, 7vw, 2.2rem) !important;
+        margin: 30px 0 !important;
+        color: #fff !important;
+        width: 90%;
+    }
+
+    /* SOLO ESTO PARA EL CONTACTO */
+    .contact-socials {
+    display: flex !important;
+    flex-direction: column !important; /* Esto los pone uno debajo del otro */
+    align-items: center !important;
+    gap: 20px !important;
+    margin-top: 30px !important;
+    }
+
+    .contact-socials a {
+    display: block !important; /* Fuerza a que cada link ocupe su propia fila */
+    width: fit-content;
+    }
+
+    /* Aseguramos que el texto 'LinkedIn/GitHub' solo se vea en el contacto */
+    .contact-socials a span {
+        display: inline-block !important;
+        font-size: 1.1rem;
+        color: #fff;
+    }
+
+    .social-mobile a span {
+        display: none !important; /* Lo ocultamos en el menú de arriba para que no estorbe */
+    }
+
+    /* 5. Filtros del Portafolio (Corrección de la captura donde se cortan) */
+    .portfolio-filters {
         display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
+        flex-wrap: wrap; /* Permite que los botones bajen si no caben */
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 30px;
         padding: 0 10px;
     }
 
@@ -1147,21 +1170,6 @@ body {
     .nav-item span {
         display: inline-block;
         font-size: 1.5rem;
-    }
-
-    .social-mobile {
-    display: flex;
-    justify-content: center;
-    gap: 30px; /* Espacio entre LinkedIn y GitHub */
-    margin-top: 30px; /* Separación del bloque de links superior */
-    padding-top: 30px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Línea sutil divisoria */
-    width: 60%; /* Ancho de la línea divisoria */
-    }
-
-    .social-mobile a i {
-        font-size: 2rem; /* Iconos un poco más grandes y fáciles de tocar */
-        color: #fff;
     }
 
     .nav-links .nav-item {
@@ -1265,22 +1273,54 @@ body {
     }
 }
 
-/* --- AJUSTE ESPECÍFICO PARA EL CORREO EN PANTALLAS MEDIANAS (1632px aprox) --- */
-@media (max-width: 1700px) {
-    .contact-email-big {
-        font-size: 4.5vw; /* Reducción ligera para evitar el desborde que viste */
-    }
-}
 
-/* --- SOLO PARA ESCRITORIO --- */
-@media (min-width: 901px) {
-    .main-content {
-        margin-left: 70px; /* Espacio para la barra lateral negra */
-    }
+@media (min-width: 901px) and (max-width: 1800px) {
     
-    .nav-links .nav-item i {
-        color: #fff; /* O el color que prefieras para los iconos laterales */
+    /* 1. SECCIÓN CONTACTO (Prioridad Alta) */
+    #contacto {
+        min-height: 80vh !important; 
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        text-align: center;
+        padding: 40px 20px !important;
+        background-color: #000;
     }
+
+    /* Bajamos un poco el título para que respire respecto al degradado superior */
+    #contacto h2 {
+        margin-top: 20px !important;
+        font-size: 1.1rem !important;
+        color: rgba(255,255,255,0.8); /* Un gris claro para el subtítulo */
+    }
+
+    /* 3. CORREO: Ajuste dinámico para que NUNCA se salga de la pantalla */
+    .contact-email-big {
+        /* Ajustamos el tamaño para que no sea tan invasivo pero destaque */
+        font-size: clamp(1.5rem, 7vw, 2.2rem) !important;
+        margin: 30px 0 !important;
+        color: #fff !important;
+        width: 90%;
+    }
+
+    /* --- ESTO ES LO QUE PONE LOS BOTONES EN VERTICAL EN MÓVIL --- */
+    .contact-footer-links {
+        display: flex !important;
+        flex-direction: column !important; /* LinkedIn arriba, GitHub abajo */
+        align-items: center !important;
+        gap: 20px !important; /* Espacio entre los dos bloques */
+        width: 100% !important;
+    }
+
+    .social-box-link {
+        display: flex !important;
+        flex-direction: row !important; /* El icono y el texto siguen juntos en su fila */
+        align-items: center !important;
+        justify-content: flex-start !important;
+        width: 280px !important; /* Ancho fijo para que se vean parejos y centrados */
+        padding: 15px !important;
+    }
+
+    
 }
-
-
